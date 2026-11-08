@@ -1,0 +1,20 @@
+work/editor-deps/node_modules/
+runtime-src/.godot/
+runtime-src/build.log
+
+node_modules/
+dist/
+.DS_Store
+test-results/
+playwright-report/
+
+# Local tooling, review captures and validation output
+/.impeccable/review/
+/.openai/
+/work/design-review/*.png
+/work/runtime-validation/*.log
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
