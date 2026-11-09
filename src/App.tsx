@@ -99,7 +99,7 @@ export function App() {
           </Suspense>
         </div>
       ) : (
-        <Home resume={resume} />
+        <Home resume={resume} progress={progress} />
       )}
     </>
   );

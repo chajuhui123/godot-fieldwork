@@ -98,3 +98,37 @@ test("home offers to continue the last opened lesson", async ({ page }) => {
   await resume.click();
   await expect(page.locator("#lesson-title")).toHaveText("시그널 연결");
 });
+
+test("recommended 2D track derives progress from existing lesson records", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator(".home-track-count")).toHaveText("0 / 10");
+  await expect(page.locator(".home-track .home-primary")).toHaveText(
+    /트랙 시작/,
+  );
+  await page.evaluate(() => {
+    localStorage.setItem(
+      "godot-fieldwork-progress-v1",
+      JSON.stringify({
+        "gdscript-data": { engineWorkshop: true, quiz: true },
+        nodes: { engineWorkshop: true, quiz: true },
+        signals: { engineWorkshop: true },
+      }),
+    );
+  });
+  await page.reload();
+  await expect(page.locator(".home-track-count")).toHaveText("2 / 10");
+  const cta = page.locator(".home-track .home-primary");
+  await expect(cta).toHaveText(/트랙 이어가기/);
+  await expect(cta).toHaveAttribute("href", "#attach-script");
+  await expect(page.locator(".home-track-list li.is-done")).toHaveCount(2);
+  await cta.click();
+  await expect(page.locator("#lesson-title")).toHaveText("스크립트 붙이기");
+  await page.getByRole("button", { name: "학습 목차" }).click();
+  const track = page.locator(".track-module");
+  await expect(track).toHaveAttribute("open", "");
+  await expect(track.locator(".module-title i")).toHaveText("2/10");
+  await track.getByRole("button", { name: /델타와 이동/ }).click();
+  await expect(page.locator("#lesson-title")).toHaveText("델타와 이동");
+});
