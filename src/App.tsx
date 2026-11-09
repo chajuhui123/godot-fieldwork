@@ -56,10 +56,6 @@ export function App() {
         resumeHref={resume ? "#" + resume.lesson.id : undefined}
         openMenu={() => menu.current?.showModal()}
         progress={progress}
-        reset={() => {
-          reset();
-          setGeneration((n) => n + 1);
-        }}
       />
       {lesson ? (
         <div className="studio-shell">
@@ -81,7 +77,14 @@ export function App() {
                 닫기
               </button>
             </div>
-            <Sidebar lesson={lesson} progress={progress} />
+            <Sidebar
+              lesson={lesson}
+              progress={progress}
+              reset={() => {
+                reset();
+                setGeneration((n) => n + 1);
+              }}
+            />
           </dialog>
           <Suspense
             fallback={
