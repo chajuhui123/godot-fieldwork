@@ -2,19 +2,19 @@ import { useRef } from "react";
 import { courses, lessons, type Lesson } from "../data/courses";
 import { complete, type Progress } from "../progress";
 import { Icon } from "./Icons";
+import { twoDTrack, trackProgress } from "../data/tracks";
 
 export function Header({
   home,
   progress,
-  reset,
   openMenu,
+  resumeHref,
 }: {
   home: boolean;
+  resumeHref?: string;
   progress: Progress;
-  reset: () => void;
   openMenu: () => void;
 }) {
-  const dialog = useRef<HTMLDialogElement>(null);
   const done = lessons.filter((l) => complete(progress[l.id])).length;
   return (
     <>
@@ -33,8 +33,8 @@ export function Header({
         </a>
         {home ? (
           <nav className="home-nav" aria-label="홈 메뉴">
-            <a className="home-nav-primary" href="#editor">
-              학습 시작 →
+            <a className="home-nav-primary" href={resumeHref ?? "#editor"}>
+              {resumeHref ? "이어하기 →" : "학습 시작 →"}
             </a>
           </nav>
         ) : (
@@ -65,22 +65,32 @@ export function Header({
                 />
               </div>
             </div>
-            <button
-              className="quiet-button"
-              id="reset-progress"
-              onClick={() => {
-                if (dialog.current) {
-                  dialog.current.returnValue = "";
-                  dialog.current.showModal();
-                }
-              }}
-            >
-              <Icon name="reset" />
-              진도 초기화
-            </button>
           </>
         )}
       </header>
+    </>
+  );
+}
+
+// 진도 초기화는 되돌릴 수 없으므로 헤더가 아니라 학습 목차 아래에 둔다.
+function ResetProgress({ reset }: { reset: () => void }) {
+  const dialog = useRef<HTMLDialogElement>(null);
+  return (
+    <>
+      <button
+        type="button"
+        className="reset-link"
+        id="reset-progress"
+        onClick={() => {
+          if (dialog.current) {
+            dialog.current.returnValue = "";
+            dialog.current.showModal();
+          }
+        }}
+      >
+        <Icon name="reset" />
+        진도 초기화
+      </button>
       <dialog
         id="reset-dialog"
         ref={dialog}
@@ -108,11 +118,15 @@ export function Header({
 export function Sidebar({
   lesson,
   progress,
+  reset,
 }: {
   lesson: Lesson;
   progress: Progress;
+  reset: () => void;
 }) {
   const current = courses.find((c) => c.lessons.includes(lesson))!;
+  const track = trackProgress(twoDTrack, progress);
+  const inTrack = twoDTrack.lessons.includes(lesson);
   return (
     <aside className="curriculum" aria-label="학습 목차">
       <div className="curriculum-scroll">
@@ -139,6 +153,33 @@ export function Sidebar({
           </select>
         </div>
         <nav id="curriculum-nav">
+          <details className="module track-module" open={inTrack}>
+            <summary className="module-title">
+              <b>추천 · {twoDTrack.title}</b>
+              <i>
+                {track.done}/{track.total}
+              </i>
+            </summary>
+            {twoDTrack.lessons.map((l, i) => (
+              <button
+                type="button"
+                key={l.id}
+                className={"lesson-nav" + (l === lesson ? " active" : "")}
+                onClick={() => {
+                  location.hash = l.id;
+                }}
+              >
+                <span className="num">{String(i + 1).padStart(2, "0")}</span>
+                <span>{l.title}</span>
+                {complete(progress[l.id]) && (
+                  <span className="done">
+                    <Icon name="check" />
+                    <span className="visually-hidden">완료</span>
+                  </span>
+                )}
+              </button>
+            ))}
+          </details>
           {courses.map((c) => (
             <section className="module" key={c.id}>
               <div className="module-title">
@@ -178,6 +219,9 @@ export function Sidebar({
             재구성했습니다.
           </p>
         </div>
+      </div>
+      <div className="sidebar-actions">
+        <ResetProgress reset={reset} />
       </div>
       <div className="site-credit" aria-label="저작권 및 제작자">
         <span>© 2026 Juhee Cha</span>

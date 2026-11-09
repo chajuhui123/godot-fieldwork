@@ -19,6 +19,8 @@ export interface RuntimeView {
   tests: TestResult[];
   active: boolean;
   stopped: boolean;
+  /** 엔진이 준비되기 전까지만 값이 있다. percent는 내려받기 진행률(모르면 null). */
+  loading: { phase: "fetch" | "start"; percent: number | null } | null;
 }
 export const initialView: RuntimeView = {
   status: "실행하면 엔진을 불러옵니다",
@@ -29,6 +31,7 @@ export const initialView: RuntimeView = {
   tests: [],
   active: false,
   stopped: false,
+  loading: null,
 };
 type Reply =
   | { type: "ready" }
@@ -107,7 +110,7 @@ export function createSession(
   }
   function stop(status = "정지됨") {
     release();
-    publish({ status, active: false, stopped: true });
+    publish({ status, active: false, stopped: true, loading: null });
   }
   function send() {
     if (!frame?.contentWindow || !ready || !pending) return;
@@ -167,7 +170,10 @@ export function createSession(
     frame.setAttribute("sandbox", "allow-scripts allow-pointer-lock");
     frame.allow = "autoplay";
     const created = frame;
-    publish({ status: "Godot 엔진을 불러오는 중…" });
+    publish({
+      status: "Godot 엔진을 불러오는 중…",
+      loading: { phase: "fetch", percent: null },
+    });
     void runtimeBase()
       .then((base) => {
         if (frame !== created) return;
@@ -218,10 +224,22 @@ export function createSession(
       case "ready":
         ready = true;
         clearTimeout(loadTimer);
+        publish({ loading: null });
         send();
         break;
       case "loading":
-        if (!ready) publish({ status: "Godot 로딩 " + d.message });
+        if (!ready) {
+          const percent = Number.parseInt(d.message, 10);
+          const known = Number.isFinite(percent);
+          publish({
+            status: "Godot 로딩 " + d.message,
+            loading: {
+              // 내려받기가 끝나면 WASM 컴파일과 프로젝트 준비가 남는다.
+              phase: known && percent >= 100 ? "start" : "fetch",
+              percent: known ? Math.min(100, Math.max(0, percent)) : null,
+            },
+          });
+        }
         break;
       case "fatal":
         stop("실행 오류");

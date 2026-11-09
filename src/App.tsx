@@ -1,9 +1,11 @@
 import { lazy, useRef, Suspense, useEffect, useState } from "react";
 import { lessons } from "./data/courses";
 import { useProgress } from "./progress";
+import { rememberLesson, resumeTarget } from "./resume";
 import { Home } from "./components/Home";
 import { Header, Sidebar } from "./components/Shell";
 import { Icons } from "./components/Icons";
+import { LessonSkeleton } from "./components/LessonSkeleton";
 const LessonPage = lazy(() =>
   import("./components/LessonPage").then((module) => ({
     default: module.LessonPage,
@@ -21,6 +23,10 @@ export function App() {
     window.addEventListener("hashchange", change);
     return () => window.removeEventListener("hashchange", change);
   }, []);
+  useEffect(() => {
+    if (lesson) rememberLesson(lesson.id);
+  }, [lesson]);
+  const resume = lesson ? null : resumeTarget(progress);
   const target = lesson ? "lesson-workspace" : "home";
   useEffect(() => {
     menu.current?.close();
@@ -48,12 +54,9 @@ export function App() {
       <Icons />
       <Header
         home={!lesson}
+        resumeHref={resume ? "#" + resume.lesson.id : undefined}
         openMenu={() => menu.current?.showModal()}
         progress={progress}
-        reset={() => {
-          reset();
-          setGeneration((n) => n + 1);
-        }}
       />
       {lesson ? (
         <div className="studio-shell">
@@ -75,14 +78,17 @@ export function App() {
                 닫기
               </button>
             </div>
-            <Sidebar lesson={lesson} progress={progress} />
+            <Sidebar
+              lesson={lesson}
+              progress={progress}
+              reset={() => {
+                reset();
+                setGeneration((n) => n + 1);
+              }}
+            />
           </dialog>
           <Suspense
-            fallback={
-              <main className="lesson-workspace" aria-busy="true">
-                수업을 불러오는 중…
-              </main>
-            }
+            fallback={<LessonSkeleton />}
           >
             <LessonPage
               key={lesson.id + ":" + generation}
@@ -93,7 +99,7 @@ export function App() {
           </Suspense>
         </div>
       ) : (
-        <Home />
+        <Home resume={resume} progress={progress} />
       )}
     </>
   );

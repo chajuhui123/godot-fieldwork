@@ -18,6 +18,8 @@ export interface Workshop {
   expanded?: boolean;
   stage?: string;
   scope?: string;
+  /** 브라우저에서 실행할 수 없는 주제를 다른 API로 대신 실습하는 과제 */
+  substitute?: boolean;
   checker?: string;
   assessment?: string;
 }
