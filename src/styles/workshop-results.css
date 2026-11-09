@@ -2,17 +2,25 @@
    - 결과는 하단 도구 도크의 첫 탭에서 보고, 툴바 배지로 통과 여부를 바로 알린다.
    - Inspector는 Godot 에디터처럼 코드 오른쪽 도크에 둔다. */
 
-/* --- 툴바 결과 배지 --- */
+/* --- 툴바: 파일 이름은 왼쪽, 결과 배지와 실행 버튼은 오른쪽에 모은다. --- */
+.studio .code-pane .live-toolbar {
+  gap: 8px;
+  padding: 6px 16px;
+}
 .studio .code-pane .live-toolbar .live-file {
-  margin-right: 4px;
+  margin-right: auto;
+}
+.studio .code-pane .live-toolbar button {
+  min-height: 36px;
+  padding: 0 14px;
 }
 .workshop .live-toolbar .result-pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   min-height: 32px;
-  margin-right: auto;
-  padding: 4px 12px 4px 8px;
+  margin-right: 8px;
+  padding: 4px 14px 4px 8px;
   border: 1px solid transparent;
   border-radius: 999px;
   font-size: 13px;
@@ -251,7 +259,14 @@
   .studio .code-pane .live-toolbar:has(.result-pill) .live-file {
     display: none;
   }
+  .studio .code-pane .live-toolbar {
+    padding-inline: 12px;
+  }
+  .studio .code-pane .live-toolbar button {
+    padding-inline: 10px;
+  }
   .workshop .live-toolbar .result-pill {
+    margin-right: auto;
     padding-right: 10px;
   }
 }
