@@ -10,6 +10,7 @@ import "./styles/home-editorial.css";
 import "./styles/lesson-spacing.css";
 import "./styles/studio.css";
 import "./styles/loading.css";
+import "./styles/workshop-results.css";
 import { createRoot } from "react-dom/client";
 import { App } from "./App";
 createRoot(document.getElementById("root")!).render(<App />);

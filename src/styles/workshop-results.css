@@ -1,0 +1,273 @@
+/* 채점 결과와 Inspector 배치.
+   - 결과는 하단 도구 도크의 첫 탭에서 보고, 툴바 배지로 통과 여부를 바로 알린다.
+   - Inspector는 Godot 에디터처럼 코드 오른쪽 도크에 둔다. */
+
+/* --- 툴바 결과 배지 --- */
+.studio .code-pane .live-toolbar .live-file {
+  margin-right: 4px;
+}
+.workshop .live-toolbar .result-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  margin-right: auto;
+  padding: 4px 12px 4px 8px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 13px;
+  line-height: 20px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.workshop .live-toolbar .result-pill b {
+  font-weight: 600;
+}
+.workshop .live-toolbar .result-pill .result-count {
+  font-size: 12px;
+  opacity: 0.85;
+}
+.workshop .live-toolbar .result-pill[data-state="pass"] {
+  background: #1d5a38;
+  border-color: #3f8f62;
+  color: #e5f6ec;
+}
+.workshop .live-toolbar .result-pill[data-state="pass"]:hover {
+  background: #23683f;
+}
+.workshop .live-toolbar .result-pill[data-state="fail"],
+.workshop .live-toolbar .result-pill[data-state="error"] {
+  background: #5e2228;
+  border-color: #a4434b;
+  color: #fde9ea;
+}
+.workshop .live-toolbar .result-pill[data-state="fail"]:hover,
+.workshop .live-toolbar .result-pill[data-state="error"]:hover {
+  background: #6e2930;
+}
+.workshop .live-toolbar .result-pill[data-state="checking"] {
+  background: #334058;
+  border-color: #4d607c;
+  color: #dce6f4;
+}
+
+/* 상태 아이콘: 통과 ✓, 미통과·오류 !, 채점 중 회전 원 */
+.result-icon {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+[data-state="pass"] > .result-icon,
+[data-state="pass"] .verdict-banner > .result-icon {
+  background: #3fae6e;
+  color: #fff;
+}
+[data-state="pass"] > .result-icon::before,
+[data-state="pass"] .verdict-banner > .result-icon::before {
+  content: "✓";
+}
+[data-state="fail"] > .result-icon,
+[data-state="error"] > .result-icon,
+[data-state="fail"] .verdict-banner > .result-icon,
+[data-state="error"] .verdict-banner > .result-icon {
+  background: #d4515a;
+  color: #fff;
+}
+[data-state="fail"] > .result-icon::before,
+[data-state="error"] > .result-icon::before,
+[data-state="fail"] .verdict-banner > .result-icon::before,
+[data-state="error"] .verdict-banner > .result-icon::before {
+  content: "!";
+}
+[data-state="checking"] > .result-icon,
+[data-state="checking"] .verdict-banner > .result-icon {
+  border: 2px solid #8ea6c6;
+  border-top-color: transparent;
+  animation: result-spin 900ms linear infinite;
+}
+@keyframes result-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- 하단 도크 탭 배지 --- */
+.studio .tool-strip .tab-badge {
+  margin-left: 8px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: #3a4a63;
+  font-size: 12px;
+  line-height: 20px;
+}
+.studio .tool-strip .tab-badge[data-state="pass"] {
+  background: #1d5a38;
+  color: #e5f6ec;
+}
+.studio .tool-strip .tab-badge[data-state="fail"] {
+  background: #5e2228;
+  color: #fde9ea;
+}
+
+/* --- 결과 탭 --- */
+.studio .tool-body > .tool-results {
+  padding: 16px 20px;
+}
+.studio .tool-body .live-output {
+  display: block;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+.studio .live-output .verdict-banner {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  border: 1px solid #cdd7e4;
+  border-radius: 4px;
+  background: #fff;
+}
+.studio .live-output .verdict-banner > .result-icon {
+  width: 24px;
+  height: 24px;
+  margin-top: 2px;
+  font-size: 14px;
+}
+.studio .live-output:not([data-state]) .verdict-banner > .result-icon {
+  display: none;
+}
+.studio .live-output .verdict-banner strong {
+  display: block;
+  font-size: 16px;
+  line-height: 24px;
+}
+.studio .live-output .verdict-banner p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.studio .live-output[data-state="pass"] .verdict-banner {
+  border-color: #9fcdb1;
+  background: #ecf7f0;
+}
+.studio .live-output[data-state="pass"] .verdict-banner strong {
+  color: #1d5a38;
+}
+.studio .live-output[data-state="fail"] .verdict-banner,
+.studio .live-output[data-state="error"] .verdict-banner {
+  border-color: #e2c3c5;
+  background: #fdf3f3;
+}
+.studio .live-output[data-state="fail"] .verdict-banner strong,
+.studio .live-output[data-state="error"] .verdict-banner strong {
+  color: #8f2329;
+}
+
+/* --- Inspector 도크 (코드 오른쪽) --- */
+.ide-panes {
+  position: relative;
+}
+/* 긴 코드 줄이 편집기 칸을 넓혀 Inspector 아래로 겹치지 않게 한다. */
+.studio .ide-panes > .editor-area {
+  grid-template-columns: minmax(0, 1fr);
+  overflow: hidden;
+}
+#inspector-dock {
+  flex: 0 0 clamp(200px, 30%, 264px);
+  min-width: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border-left: 1px solid #374354;
+  background: #252f3f;
+  color: #dce6ef;
+}
+#inspector-dock[hidden] {
+  display: none;
+}
+.studio .ide-tabs .inspector-toggle {
+  margin-left: auto;
+}
+.studio #inspector-dock .live-inspector {
+  padding: 12px;
+  color: inherit;
+}
+.studio #inspector-dock .live-inspector h3 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #eff6ff;
+}
+.studio #inspector-dock .live-tip,
+.studio #inspector-dock .live-inspector p,
+.studio #inspector-dock summary {
+  color: #b6c8da;
+  font-size: 12px;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+.studio #inspector-dock .live-properties {
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.studio #inspector-dock .live-inspector label {
+  margin-bottom: 8px;
+  color: #dce6ef;
+}
+.studio #inspector-dock .live-inspector input[type="number"] {
+  padding: 6px 8px;
+  border-color: #4d607c;
+  background: #1b2433;
+  color: #eff6ff;
+}
+.studio #inspector-dock .live-inspector input[type="number"]:focus-visible {
+  outline: 2px solid #86add4;
+  outline-offset: 1px;
+}
+.studio #inspector-dock .live-inspector pre {
+  background: #1b2433;
+  color: #d4e1f4;
+}
+
+@media (max-width: 780px) {
+  /* 좁은 화면에서는 코드를 가리지 않도록 오른쪽에서 덮는 패널로 연다. */
+  #inspector-dock {
+    position: absolute;
+    inset: 0 0 0 auto;
+    z-index: 3;
+    width: min(280px, 85%);
+    box-shadow: -8px 0 24px rgb(0 0 0 / 0.35);
+  }
+  .studio .code-pane .live-toolbar:has(.result-pill) .live-file {
+    display: none;
+  }
+  .workshop .live-toolbar .result-pill {
+    padding-right: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-state="checking"] > .result-icon,
+  [data-state="checking"] .verdict-banner > .result-icon {
+    animation: none;
+    border-top-color: #8ea6c6;
+  }
+}
+
+/* --- 게임 미리보기: 하단 도크가 열려 높이가 줄어도 게임 화면 전체가 보이게 맞춘다. --- */
+.studio .preview-pane {
+  container-type: size;
+}
+.studio .preview-pane #live-game {
+  width: min(100%, 48dvh, calc((100cqh - 44px) * 16 / 9));
+}

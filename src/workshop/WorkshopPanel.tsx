@@ -35,7 +35,10 @@ export function WorkshopPanel({
   const [pane, setPane] = useState<"lesson" | "code">("lesson");
   const [sceneOpen, setSceneOpen] = useState(() => window.innerWidth > 780);
   const [layoutOpen, setLayoutOpen] = useState(false);
-  const tools = ["Inspector", "Console", "힌트", "프로젝트"] as const;
+  const [inspectorOpen, setInspectorOpen] = useState(
+    () => window.innerWidth > 1180,
+  );
+  const tools = ["검사 결과", "Console", "힌트", "프로젝트"] as const;
   const [tool, setTool] = useState<(typeof tools)[number] | null>(null);
   const [grading, setGrading] = useState(false);
   const [firstPass, setFirstPass] = useState(false);
@@ -48,6 +51,7 @@ export function WorkshopPanel({
   function run(check: boolean) {
     setFirstPass(false);
     setGrading(check);
+    if (check) setTool("검사 결과");
     session.current?.launch(check);
   }
   const w = workshops[id];
@@ -123,6 +127,27 @@ export function WorkshopPanel({
     const el = consoleBox.current;
     if (el) el.scrollTop = el.scrollHeight;
   }, [view.console]);
+  // 실행 오류가 나면 원인을 바로 볼 수 있게 결과(채점 중) 또는 Console을 연다.
+  useEffect(() => {
+    if (view.status === "실행 오류") setTool(grading ? "검사 결과" : "Console");
+  }, [view.status, grading]);
+  const passed = view.tests.filter((t) => t.pass).length;
+  const outcome: "pass" | "fail" | "error" | "checking" | null =
+    view.status === "실행 오류"
+      ? "error"
+      : view.tests.length
+        ? view.status === "검사 통과 · 실행 중"
+          ? "pass"
+          : "fail"
+        : grading && view.active
+          ? "checking"
+          : null;
+  const outcomeText = {
+    pass: "모든 검사 통과",
+    fail: `검사 ${view.tests.length}개 중 ${passed}개 통과`,
+    error: "실행 오류",
+    checking: "채점 중…",
+  };
   const trace = firstPass && id === "editor" ? editorPositions(view.tests) : null;
   function configure(patch: Partial<SceneConfig>) {
     const next = { ...draft.current.config, ...patch };
@@ -179,6 +204,28 @@ export function WorkshopPanel({
       >
         <div className="live-toolbar">
           <div className="live-file">main.tscn</div>
+          {outcome && (
+            <button
+              type="button"
+              id="live-result"
+              className="result-pill"
+              data-state={outcome}
+              aria-controls="tool-body"
+              onClick={() => setTool("검사 결과")}
+            >
+              <span aria-hidden="true" className="result-icon" />
+              {outcome === "fail" ? (
+                <>
+                  <b>{view.tests.length - passed}개 미통과</b>
+                  <span className="result-count">
+                    {passed} / {view.tests.length}
+                  </span>
+                </>
+              ) : (
+                <b>{outcomeText[outcome]}</b>
+              )}
+            </button>
+          )}
           <button id="live-run" onClick={() => run(false)}>
             실행
           </button>
@@ -199,6 +246,14 @@ export function WorkshopPanel({
             <button aria-expanded={sceneOpen} aria-controls="scene-dock" onClick={() => setSceneOpen(!sceneOpen)}>씬</button>
             <button aria-pressed={!layoutOpen} onClick={() => setLayoutOpen(false)}>main.gd</button>
             <button aria-pressed={layoutOpen} onClick={() => setLayoutOpen(true)}>레이아웃</button>
+            <button
+              className="inspector-toggle"
+              aria-expanded={inspectorOpen}
+              aria-controls="inspector-dock"
+              onClick={() => setInspectorOpen(!inspectorOpen)}
+            >
+              Inspector
+            </button>
           </div>
           <div className="ide-panes">
             <div id="scene-dock" hidden={!sceneOpen}>
@@ -209,107 +264,8 @@ export function WorkshopPanel({
               <p className="live-save" id="live-save" role="status">{saveText}</p>
             </div>
             {layoutOpen && <SceneLayout config={config} spatial={w.stage === "3d"}/>}
-          </div>
-        </div>
-        <section id="workshop-preview" className="preview-pane" data-first-pass={firstPass || undefined} aria-label="게임 미리보기">
-          <div className="live-game-label">
-            <strong>게임 미리보기</strong>
-            <span id="live-status" role="status">
-              {firstPass ? "첫 실습 통과" : view.status}
-            </span>
-          </div>
-          <div id="live-game" ref={gameHost}>
-            {trace && <PositionTrace {...trace}/> }
-            {view.loading && <EngineLoading loading={view.loading} />}
-            {!view.active && (
-              <div className="preview-start">
-                <button type="button" onClick={() => run(false)}>
-                  {view.stopped ? "다시 실행" : "미리보기 실행"}
-                </button>
-                <p>
-                  현재 코드로 게임을 실행합니다. 첫 실행 시 약 40MB를
-                  불러옵니다.
-                </p>
-              </div>
-            )}
-          </div>
-          {trace && <p className="trace-caption" role="status">시작 위치는 {trace.from}, 내 코드가 옮긴 위치는 {trace.to}.</p>}
-          <div
-            className="live-output"
-            hidden={!grading && view.status !== "실행 오류"}
-          >
-            <div>
-              <h3>검사 결과</h3>
-              <p id="live-verdict" role="status">
-                {view.verdict}
-              </p>
-              {view.tests.length > 0 && (
-                <div className="check-summary" id="live-summary">
-                  <p>
-                    검사 {view.tests.length}개 중{" "}
-                    <b>{view.tests.filter((t) => t.pass).length}개 통과</b>
-                  </p>
-                  <ol className="check-meter" aria-hidden="true">
-                    {view.tests.map((t, i) => (
-                      <li key={i} className={t.pass ? "passed" : "failed"} />
-                    ))}
-                  </ol>
-                </div>
-              )}
-              <ul id="live-tests">
-                {/* 고쳐야 할 항목을 먼저 보여 준다. 같은 상태 안에서는 원래 순서를 지킨다. */}
-                {[...view.tests]
-                  .sort((a, b) => Number(a.pass) - Number(b.pass))
-                  .map((t, i) => (
-                    <li key={i} className={t.pass ? "passed" : "failed"}>
-                      <span className="check-state">
-                        {t.newlySolved ? "이번에 해결" : t.pass ? "통과" : "미통과"}
-                      </span>
-                      <div className="check-detail">
-                        <strong>{t.name}</strong>
-                        {t.actual !== undefined && (
-                          <dl>
-                            <dt>목표</dt>
-                            <dd>{t.expected}</dd>
-                            <dt>이번 실행</dt>
-                            <dd className="check-actual">
-                              {t.actual || "(빈 문자열)"}
-                            </dd>
-                          </dl>
-                        )}
-                        {!t.pass && t.hint && (
-                          <p className="check-hint">
-                            <b>힌트</b> {t.hint}
-                          </p>
-                        )}
-                      </div>
-                    </li>
-                  ))}
-              </ul>
-              <p className="workshop-note">
-                {w.assessment ||
-                  "자동 검사는 표시된 조건만 확인합니다. 입력 방향·정지 동작과 응용 결과도 직접 비교하세요."}
-              </p>
-            </div>
-          </div>
-        </section>
-        </ResizableStudio>
-        <div className="tool-strip" aria-label="편집 도구">
-          {tools.map((label) => (
-            <button
-              key={label}
-              aria-pressed={tool === label}
-              aria-controls="tool-body"
-              onClick={() => setTool(tool === label ? null : label)}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-        <div className="tool-body" id="tool-body" hidden={!tool}>
-          <div hidden={tool !== "Inspector"}>
-            {" "}
-            <div className="live-inspector">
+            <aside id="inspector-dock" aria-label="Inspector" hidden={!inspectorOpen}>
+              <div className="live-inspector">
               <h3>Scene · Inspector</h3>
               <p className="live-tip">
                 {w.expanded
@@ -371,6 +327,116 @@ export function WorkshopPanel({
                 <summary>실행 중 노드와 값</summary>
                 <pre id="live-scene">{view.scene}</pre>
               </details>
+            </div>
+            </aside>
+          </div>
+        </div>
+        <section id="workshop-preview" className="preview-pane" data-first-pass={firstPass || undefined} aria-label="게임 미리보기">
+          <div className="live-game-label">
+            <strong>게임 미리보기</strong>
+            <span id="live-status" role="status">
+              {firstPass ? "첫 실습 통과" : view.status}
+            </span>
+          </div>
+          <div id="live-game" ref={gameHost}>
+            {trace && <PositionTrace {...trace}/> }
+            {view.loading && <EngineLoading loading={view.loading} />}
+            {!view.active && (
+              <div className="preview-start">
+                <button type="button" onClick={() => run(false)}>
+                  {view.stopped ? "다시 실행" : "미리보기 실행"}
+                </button>
+                <p>
+                  현재 코드로 게임을 실행합니다. 첫 실행 시 약 40MB를
+                  불러옵니다.
+                </p>
+              </div>
+            )}
+          </div>
+          {trace && <p className="trace-caption" role="status">시작 위치는 {trace.from}, 내 코드가 옮긴 위치는 {trace.to}.</p>}
+        </section>
+        </ResizableStudio>
+        <div className="tool-strip" aria-label="편집 도구">
+          {tools.map((label) => (
+            <button
+              key={label}
+              aria-pressed={tool === label}
+              aria-controls="tool-body"
+              onClick={() => setTool(tool === label ? null : label)}
+            >
+              {label}
+              {label === "검사 결과" && view.tests.length > 0 && (
+                <span className="tab-badge" data-state={outcome ?? undefined}>
+                  {passed}/{view.tests.length}
+                </span>
+              )}
+            </button>
+          ))}
+        </div>
+        <div className="tool-body" id="tool-body" hidden={!tool}>
+          <div hidden={tool !== "검사 결과"} className="tool-results">
+            <div className="live-output" data-state={outcome ?? undefined}>
+              <div>
+                <h3 className="visually-hidden">검사 결과</h3>
+                <div className="verdict-banner">
+                  <span aria-hidden="true" className="result-icon" />
+                  <div>
+                    {outcome && outcome !== "checking" && (
+                      <strong>{outcomeText[outcome]}</strong>
+                    )}
+                    <p id="live-verdict" role="status">
+                      {view.verdict}
+                    </p>
+                  </div>
+                </div>
+                {view.tests.length > 0 && (
+                  <div className="check-summary" id="live-summary">
+                    <p>
+                      검사 {view.tests.length}개 중{" "}
+                      <b>{view.tests.filter((t) => t.pass).length}개 통과</b>
+                    </p>
+                    <ol className="check-meter" aria-hidden="true">
+                      {view.tests.map((t, i) => (
+                        <li key={i} className={t.pass ? "passed" : "failed"} />
+                      ))}
+                    </ol>
+                  </div>
+                )}
+                <ul id="live-tests">
+                  {/* 고쳐야 할 항목을 먼저 보여 준다. 같은 상태 안에서는 원래 순서를 지킨다. */}
+                  {[...view.tests]
+                    .sort((a, b) => Number(a.pass) - Number(b.pass))
+                    .map((t, i) => (
+                      <li key={i} className={t.pass ? "passed" : "failed"}>
+                        <span className="check-state">
+                          {t.newlySolved ? "이번에 해결" : t.pass ? "통과" : "미통과"}
+                        </span>
+                        <div className="check-detail">
+                          <strong>{t.name}</strong>
+                          {t.actual !== undefined && (
+                            <dl>
+                              <dt>목표</dt>
+                              <dd>{t.expected}</dd>
+                              <dt>이번 실행</dt>
+                              <dd className="check-actual">
+                                {t.actual || "(빈 문자열)"}
+                              </dd>
+                            </dl>
+                          )}
+                          {!t.pass && t.hint && (
+                            <p className="check-hint">
+                              <b>힌트</b> {t.hint}
+                            </p>
+                          )}
+                        </div>
+                      </li>
+                    ))}
+                </ul>
+                <p className="workshop-note">
+                  {w.assessment ||
+                    "자동 검사는 표시된 조건만 확인합니다. 입력 방향·정지 동작과 응용 결과도 직접 비교하세요."}
+                </p>
+              </div>
             </div>
           </div>
           <div hidden={tool !== "Console"}>
