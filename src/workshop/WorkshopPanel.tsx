@@ -241,20 +241,48 @@ export function WorkshopPanel({
               <p id="live-verdict" role="status">
                 {view.verdict}
               </p>
+              {view.tests.length > 0 && (
+                <div className="check-summary" id="live-summary">
+                  <p>
+                    검사 {view.tests.length}개 중{" "}
+                    <b>{view.tests.filter((t) => t.pass).length}개 통과</b>
+                  </p>
+                  <ol className="check-meter" aria-hidden="true">
+                    {view.tests.map((t, i) => (
+                      <li key={i} className={t.pass ? "passed" : "failed"} />
+                    ))}
+                  </ol>
+                </div>
+              )}
               <ul id="live-tests">
-                {view.tests.map((t, i) => (
-                  <li key={i} className={t.pass ? "passed" : "failed"}>
-                    <span>{t.newlySolved ? "이번에 해결" : t.pass ? "통과" : "미통과"}</span>
-                    <div className="check-detail">
-                      <strong>{t.name}</strong>
-                      {t.actual !== undefined && (
-                        <dl><dt>목표</dt><dd>{t.expected}</dd>
-                          <dt>이번 실행</dt><dd>{t.actual || "(빈 문자열)"}</dd></dl>
-                      )}
-                      {!t.pass && t.hint && <p>{t.hint}</p>}
-                    </div>
-                  </li>
-                ))}
+                {/* 고쳐야 할 항목을 먼저 보여 준다. 같은 상태 안에서는 원래 순서를 지킨다. */}
+                {[...view.tests]
+                  .sort((a, b) => Number(a.pass) - Number(b.pass))
+                  .map((t, i) => (
+                    <li key={i} className={t.pass ? "passed" : "failed"}>
+                      <span className="check-state">
+                        {t.newlySolved ? "이번에 해결" : t.pass ? "통과" : "미통과"}
+                      </span>
+                      <div className="check-detail">
+                        <strong>{t.name}</strong>
+                        {t.actual !== undefined && (
+                          <dl>
+                            <dt>목표</dt>
+                            <dd>{t.expected}</dd>
+                            <dt>이번 실행</dt>
+                            <dd className="check-actual">
+                              {t.actual || "(빈 문자열)"}
+                            </dd>
+                          </dl>
+                        )}
+                        {!t.pass && t.hint && (
+                          <p className="check-hint">
+                            <b>힌트</b> {t.hint}
+                          </p>
+                        )}
+                      </div>
+                    </li>
+                  ))}
               </ul>
               <p className="workshop-note">
                 {w.assessment ||
