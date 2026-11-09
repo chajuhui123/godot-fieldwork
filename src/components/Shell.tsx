@@ -33,9 +33,6 @@ export function Header({
         </a>
         {home ? (
           <nav className="home-nav" aria-label="홈 메뉴">
-            <a className="home-nav-secondary" href="credits.html">
-              출처 안내
-            </a>
             <a className="home-nav-primary" href="#editor">
               학습 시작 →
             </a>
@@ -194,6 +191,13 @@ export function Sidebar({
             Juhee Cha의 GitHub<span className="credit-link-note"> (새 탭)</span>
           </a>
         </span>
+        <a
+          href="https://github.com/chajuhui123/godot-fieldwork"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub 저장소<span className="credit-link-note"> (새 탭)</span>
+        </a>
         <a href="credits.html">문서 출처와 라이선스</a>
       </div>
     </aside>
