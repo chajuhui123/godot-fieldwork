@@ -217,6 +217,15 @@ export function LessonPage(props: Props) {
               {String(course.lessons.indexOf(l) + 1).padStart(2, "0")}
             </p>
             <h1 id="lesson-title">{l.title}</h1>
+            {workshops[l.id].substitute && workshops[l.id].scope && (
+              <details id="lesson-scope" className="scope-flag">
+                <summary>
+                  <span className="scope-flag-label">웹 대체 실습</span>
+                  <span className="scope-flag-hint">실행 범위 보기</span>
+                </summary>
+                <p>{workshops[l.id].scope}</p>
+              </details>
+            )}
             <p id="lesson-summary" className="lesson-summary">
               {workshops[l.id].goal}
             </p>

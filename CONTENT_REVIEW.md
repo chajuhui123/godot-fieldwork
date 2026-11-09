@@ -88,7 +88,7 @@
 | 에디터 플러그인 | 도구 패널의 등록과 해제 — 실행 중 Control 패널의 수명 관리를 실습합니다. EditorPlugin 등록·에디터 독 확장은 전체 Godot 에디터 전용이며 여기서는 실행하지 않습니다. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/plugins/editor/making_plugins.html) |
 | 카메라 투영과 클리핑 | 직교 카메라로 바꾸기 — 표시된 노드·속성 결과 검사 | [공식 문서](https://docs.godotengine.org/en/4.5/classes/class_camera3d.html) |
 | PBR 재질과 색 공간 | PBR 재질의 거칠기 바꾸기 — 표시된 노드·속성 결과 검사 | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/3d/standard_material_3d.html) |
-| 간접광과 GI 선택 | 환경광으로 어두운 면 밝히기 — Compatibility에서 실제 환경광을 조절합니다. SDFGI·VoxelGI의 간접광 계산을 대체하거나 실행하는 과제는 아닙니다. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/3d/global_illumination/introduction_to_global_illumination.html) |
+| 간접광과 GI (환경광 대체) | 환경광으로 어두운 면 밝히기 — Compatibility에서 실제 환경광을 조절합니다. SDFGI·VoxelGI의 간접광 계산을 대체하거나 실행하는 과제는 아닙니다. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/3d/global_illumination/introduction_to_global_illumination.html) |
 | 메시 LOD와 화면 크기 | 거리로 메시 해상도 바꾸기 — 실제 메시를 바꾸는 수동 LOD 과제입니다. 가져온 메시의 자동 LOD 생성·화면 픽셀 오차 기반 선택은 에디터 Import 실습에서 별도로 확인합니다. 검사는 기본 카메라의 먼 거리 결과만 확인합니다. 가까운 거리로 이동한 결과는 직접 비교하세요. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/3d/mesh_lod.html) |
 | 가려진 물체와 오클루전 | 가림 객체와 뷰포트 설정하기 — 가림 객체와 컬링 설정을 실제 엔진에 등록합니다. 검사 통과는 프레임 성능 향상이나 특정 GPU 드로 콜 감소를 보장하지 않습니다. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/3d/occlusion_culling.html) |
 | MultiMesh와 공간 분할 | MultiMesh로 세 큐브 그리기 — 표시된 노드·속성 결과 검사 | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/performance/using_multimesh.html) |
@@ -97,10 +97,10 @@
 | 디졸브와 임계값 | discard로 표면 절반 없애기 — 노이즈 디졸브의 기초로 UV.x 임계값을 사용합니다. 노이즈 텍스처를 사용하는 효과는 응용 단계입니다. 자동 검사는 재질·uniform 설정을 확인하며 셰이더 수식이나 렌더링된 픽셀의 정답까지 판정하지 않습니다. 화면에서 효과를 비교하세요. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/shaders/shader_reference/spatial_shader.html) |
 | Fresnel과 시선 방향 | 시선 방향으로 가장자리 밝히기 — 자동 검사는 재질·uniform 설정을 확인하며 셰이더 수식이나 렌더링된 픽셀의 정답까지 판정하지 않습니다. 화면에서 효과를 비교하세요. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/shaders/shader_reference/spatial_shader.html) |
 | 화면 텍스처와 후처리 | 화면 텍스처 후처리하기 — 자동 검사는 재질·uniform 설정을 확인하며 셰이더 수식이나 렌더링된 픽셀의 정답까지 판정하지 않습니다. 화면에서 효과를 비교하세요. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/shaders/screen-reading_shaders.html) |
-| GPU 파티클과 가시 경계 | 파티클 수명과 발생량 조절하기 — 이 웹 과제는 CPU 파티클을 실제로 실행합니다. GPU 파티클·particle shader·GPU 성능은 설치형 렌더러에서 별도로 확인해야 합니다. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/3d/particles/properties.html) |
-| 비동기 로딩과 씬 전환 | 프레임을 나눠 씬 배치하기 — 프레임별 인스턴스 배치를 실제로 실행합니다. 파일 읽기 자체는 load()로 동기 처리하며, 별도 스레드 I/O를 수행하는 실습은 아닙니다. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/io/background_loading.html) |
-| 물리 보간과 순간이동 | 순간이동 후 보간 이력 초기화하기 — 노드의 실제 보간 설정과 순간이동 API를 실행합니다. 이 정지 장면의 검사는 보간 이력 초기화 호출 여부나 화면의 부드러움을 자동 판정하지 않습니다. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/physics/interpolation/using_physics_interpolation.html) |
+| GPU 파티클 (CPU 파티클 대체) | CPU 파티클 수명과 발생량 조절하기 — 이 웹 과제는 CPU 파티클을 실제로 실행합니다. GPU 파티클·particle shader·GPU 성능은 설치형 렌더러에서 별도로 확인해야 합니다. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/3d/particles/properties.html) |
+| 비동기 로딩 (동기 로드 대체) | 동기 로드 후 프레임마다 씬 배치하기 — 프레임별 인스턴스 배치를 실제로 실행합니다. 파일 읽기 자체는 load()로 동기 처리하며, 별도 스레드 I/O를 수행하는 실습은 아닙니다. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/io/background_loading.html) |
+| 물리 보간 (부드러움 미채점) | 보간 모드 켜고 순간이동하기 — 노드의 실제 보간 설정과 순간이동 API를 실행합니다. 이 정지 장면의 검사는 보간 이력 초기화 호출 여부나 화면의 부드러움을 자동 판정하지 않습니다. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/physics/interpolation/using_physics_interpolation.html) |
 | 내비게이션 회피와 이동 | 회피 서버 응답으로 이동하기 — 이 과제는 장애물이 없는 단일 에이전트의 회피 속도 콜백을 연결합니다. 목적지까지의 경로 추종이나 여러 장애물 회피를 검증하지 않습니다. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/navigation/navigation_using_navigationagents.html) |
 | 게임 상태와 일시 정지 | 일시 정지와 재개 연결하기 — 자동 검사는 재개 후 상태와 문구를 확인합니다. 실제로 0.4초 동안 정지하는 과정은 화면에서 확인하세요. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/scripting/pausing_games.html) |
-| 네트워크 스냅샷과 보간 | 두 스냅샷 사이의 위치 보간하기 — GDScript로 실제 좌표 보간 함수를 실행합니다. 네트워크 패킷이나 서버 지연은 발생시키지 않고 입력 스냅샷을 코드로 제공합니다. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/networking/high_level_multiplayer.html) |
-| 컴퓨트 셰이더와 버퍼 | 버퍼 인덱스와 바이트 결과 확인하기 — Web Compatibility는 컴퓨트 셰이더를 지원하지 않습니다. 이 과제는 CPU에서 버퍼 변환·범위 처리를 실행합니다. GPU dispatch·동기화·성능은 설치형 Forward+/Mobile 실습이 필요합니다. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/shaders/compute_shaders.html) |
+| 네트워크 스냅샷 (좌표 보간 모델) | 주어진 두 좌표 사이를 보간하기 — GDScript로 실제 좌표 보간 함수를 실행합니다. 네트워크 패킷이나 서버 지연은 발생시키지 않고 입력 스냅샷을 코드로 제공합니다. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/networking/high_level_multiplayer.html) |
+| 컴퓨트 셰이더 (CPU 배열 모델) | CPU 배열로 버퍼 값 두 배 만들기 — Web Compatibility는 컴퓨트 셰이더를 지원하지 않습니다. 이 과제는 CPU에서 버퍼 변환·범위 처리를 실행합니다. GPU dispatch·동기화·성능은 설치형 Forward+/Mobile 실습이 필요합니다. | [공식 문서](https://docs.godotengine.org/en/4.5/tutorials/shaders/compute_shaders.html) |

@@ -245,7 +245,7 @@
     "reference": "https://docs.godotengine.org/en/4.5/tutorials/3d/standard_material_3d.html"
   },
   "global-illumination": {
-    "title": "간접광과 GI 선택",
+    "title": "간접광과 GI (환경광 대체)",
     "docs": "https://docs.godotengine.org/en/stable/tutorials/3d/global_illumination/introduction_to_global_illumination.html",
     "reference": "https://docs.godotengine.org/en/4.5/tutorials/3d/global_illumination/introduction_to_global_illumination.html"
   },
@@ -290,17 +290,17 @@
     "reference": "https://docs.godotengine.org/en/4.5/tutorials/shaders/screen-reading_shaders.html"
   },
   "gpu-particles": {
-    "title": "GPU 파티클과 가시 경계",
+    "title": "GPU 파티클 (CPU 파티클 대체)",
     "docs": "https://docs.godotengine.org/en/stable/tutorials/3d/particles/properties.html",
     "reference": "https://docs.godotengine.org/en/4.5/tutorials/3d/particles/properties.html"
   },
   "async-loading": {
-    "title": "비동기 로딩과 씬 전환",
+    "title": "비동기 로딩 (동기 로드 대체)",
     "docs": "https://docs.godotengine.org/en/stable/tutorials/io/background_loading.html",
     "reference": "https://docs.godotengine.org/en/4.5/tutorials/io/background_loading.html"
   },
   "physics-interpolation": {
-    "title": "물리 보간과 순간이동",
+    "title": "물리 보간 (부드러움 미채점)",
     "docs": "https://docs.godotengine.org/en/stable/tutorials/physics/interpolation/using_physics_interpolation.html",
     "reference": "https://docs.godotengine.org/en/4.5/tutorials/physics/interpolation/using_physics_interpolation.html"
   },
@@ -315,12 +315,12 @@
     "reference": "https://docs.godotengine.org/en/4.5/tutorials/scripting/pausing_games.html"
   },
   "network-snapshots": {
-    "title": "네트워크 스냅샷과 보간",
+    "title": "네트워크 스냅샷 (좌표 보간 모델)",
     "docs": "https://docs.godotengine.org/en/stable/tutorials/networking/high_level_multiplayer.html",
     "reference": "https://docs.godotengine.org/en/4.5/tutorials/networking/high_level_multiplayer.html"
   },
   "compute-shaders": {
-    "title": "컴퓨트 셰이더와 버퍼",
+    "title": "컴퓨트 셰이더 (CPU 배열 모델)",
     "docs": "https://docs.godotengine.org/en/stable/tutorials/shaders/compute_shaders.html",
     "reference": "https://docs.godotengine.org/en/4.5/tutorials/shaders/compute_shaders.html"
   }

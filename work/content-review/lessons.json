@@ -4747,7 +4747,7 @@
   },
   {
     "id": "global-illumination",
-    "title": "간접광과 GI 선택",
+    "title": "간접광과 GI (환경광 대체)",
     "prerequisites": [
       [
         "first-3d-loop",
@@ -5696,7 +5696,7 @@
   },
   {
     "id": "gpu-particles",
-    "title": "GPU 파티클과 가시 경계",
+    "title": "GPU 파티클 (CPU 파티클 대체)",
     "prerequisites": [
       [
         "shaders",
@@ -5802,7 +5802,7 @@
   },
   {
     "id": "async-loading",
-    "title": "비동기 로딩과 씬 전환",
+    "title": "비동기 로딩 (동기 로드 대체)",
     "prerequisites": [
       [
         "instancing",
@@ -5910,7 +5910,7 @@
   },
   {
     "id": "physics-interpolation",
-    "title": "물리 보간과 순간이동",
+    "title": "물리 보간 (부드러움 미채점)",
     "prerequisites": [
       [
         "loop",
@@ -6231,7 +6231,7 @@
   },
   {
     "id": "network-snapshots",
-    "title": "네트워크 스냅샷과 보간",
+    "title": "네트워크 스냅샷 (좌표 보간 모델)",
     "prerequisites": [
       [
         "multiplayer",
@@ -6239,7 +6239,7 @@
       ],
       [
         "physics-interpolation",
-        "물리 보간과 순간이동"
+        "물리 보간 (부드러움 미채점)"
       ]
     ],
     "summary": "원격 플레이어는 일정 간격으로 받은 상태를 버퍼에 두고 두 샘플 사이를 표시할 수 있습니다. 표시 지연과 부드러움의 절충이며 로컬 입력 예측과는 다릅니다.",
@@ -6340,7 +6340,7 @@
   },
   {
     "id": "compute-shaders",
-    "title": "컴퓨트 셰이더와 버퍼",
+    "title": "컴퓨트 셰이더 (CPU 배열 모델)",
     "prerequisites": [
       [
         "shaders",
