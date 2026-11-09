@@ -1,6 +1,20 @@
 from pathlib import Path
 import json
 OUT={}
+def check_entry(label,expr,expected=None,actual=None,hint=None):
+    """A check is (label, expr) or (label, expr, expected, actual, hint).
+    expected and hint are Korean text; actual is a GDScript expression shown as text,
+    so it must not fail when the learner's node is missing or has another type."""
+    entry='{"name":'+json.dumps(label,ensure_ascii=False)+',"pass":bool('+expr+')'
+    if expected is not None:
+        entry+=',"expected":'+json.dumps(expected,ensure_ascii=False)+',"actual":str('+actual+'),"hint":'+json.dumps(hint,ensure_ascii=False)
+    return entry+'}'
+def node_value(path,expr,missing='노드 없음'):
+    """GDScript expression that evaluates expr (with @ standing for the node at path) only when the node exists."""
+    return '('+expr.replace('@','s.get_node('+json.dumps(path)+')')+' if s.has_node('+json.dumps(path)+') else '+json.dumps(missing,ensure_ascii=False)+')'
+STATUS_TEXT=node_value('Status','@.text')
+_mobs='["Mob0","Mob1","Mob2"].filter(func(n): return s.has_node(n))'
+MOBS_FOUND='(", ".join(PackedStringArray('+_mobs+'))+" ("+str('+_mobs+'.size())+"개)" if '+_mobs+'.size()>0 else "Mob 노드 없음")'
 def add(id,title,goal,body,checks,*,stage='2d',preamble='',scope='',challenge='',hint='',setup='',substitute=False):
     prefix='extends Node2D\n'
     if stage=='3d':prefix+='\n@onready var mesh: MeshInstance3D = $Preview/World/Stage/Mesh\n@onready var camera: Camera3D = $Preview/World/Stage/Camera\n@onready var stage: Node3D = $Preview/World/Stage\n'
@@ -8,8 +22,8 @@ def add(id,title,goal,body,checks,*,stage='2d',preamble='',scope='',challenge=''
     body='\n'.join('\t'+line if line else '' for line in body.splitlines())+'\n'
     solution=prefix+body
     starter=prefix+'\t# TODO: '+goal+'\n\tpass\n'
-    checker='extends RefCounted\nfunc verify(s: Node) -> Array:\n\treturn [\n'+',\n'.join('\t\t{"name":'+json.dumps(label,ensure_ascii=False)+',"pass":bool('+expr+')}' for label,expr in checks)+'\n\t]\n'
-    OUT[id]={'expanded':True,'stage':stage,'title':title,'goal':goal,'starter':starter,'solution':solution,'checker':checker,'scope':scope,**({'substitute':True} if substitute else {}),'setup':setup,'expected':' · '.join(label for label,_ in checks),'bug':hint or 'Console의 첫 오류 줄부터 확인하세요. 노드 이름은 대소문자를 구분합니다.','challenge':challenge or '완성 코드의 수치나 대상을 바꿔 다시 실행하고, 결과가 달라지는 이유를 설명해 보세요.','steps':[['준비된 씬 확인','실행 중 노드와 값에서 실제 노드 구조를 확인합니다.'],['코드 작성',goal],['실행 결과 비교','게임 화면·Console·검사 결과를 비교하고 코드를 고칩니다.'],['응용','같은 API에 다른 값을 넣고 다시 실행합니다.']]}
+    checker='extends RefCounted\nfunc verify(s: Node) -> Array:\n\treturn [\n'+',\n'.join('\t\t'+check_entry(*check) for check in checks)+'\n\t]\n'
+    OUT[id]={'expanded':True,'stage':stage,'title':title,'goal':goal,'starter':starter,'solution':solution,'checker':checker,'scope':scope,**({'substitute':True} if substitute else {}),'setup':setup,'expected':' · '.join(check[0] for check in checks),'bug':hint or 'Console의 첫 오류 줄부터 확인하세요. 노드 이름은 대소문자를 구분합니다.','challenge':challenge or '완성 코드의 수치나 대상을 바꿔 다시 실행하고, 결과가 달라지는 이유를 설명해 보세요.','steps':[['준비된 씬 확인','실행 중 노드와 값에서 실제 노드 구조를 확인합니다.'],['코드 작성',goal],['실행 결과 비교','게임 화면·Console·검사 결과를 비교하고 코드를 고칩니다.'],['응용','같은 API에 다른 값을 넣고 다시 실행합니다.']]}
 P='s.get_node("Player")'
 S='s.get_node("Status")'
 M='s.get_node("Preview/World/Stage/Mesh")'
@@ -24,14 +38,16 @@ for i in range(2):
 	token.name = ["A", "B"][i]
 	token.position = Vector2(240 + i * 160, 180)
 	add_child(token)
-$Status.text = "같은 씬, 서로 다른 인스턴스"''',[('A와 B 노드가 존재','s.has_node("A") and s.has_node("B")'),('B X=400','s.has_node("B") and s.get_node("B").position.x==400')])
+$Status.text = "같은 씬, 서로 다른 인스턴스"''',[('A와 B 노드가 존재','s.has_node("A") and s.has_node("B")','A, B 모두 있음','("A 있음" if s.has_node("A") else "A 없음")+", "+("B 있음" if s.has_node("B") else "B 없음")','instantiate()로 만든 노드의 name을 "A"와 "B"로 정하고 add_child()로 Main에 추가했는지 확인하세요. add_child()를 빼먹으면 노드가 씬 트리에 나타나지 않아요.'),
+ ('B X=400','s.has_node("B") and s.get_node("B") is Node2D and s.get_node("B").position.x==400','400.0 px',node_value('B','(str(@.position.x)+" px" if @ is Node2D else "Node2D가 아님")'),'B는 두 번째 인스턴스라 240 + 1 × 160 = 400이어야 해요. 반복문의 i로 X를 계산했는지, A와 B의 이름이나 좌표가 뒤바뀌지 않았는지 확인하세요.')])
 add('first-2d-loop','타이머로 적 세 개 생성하기','0.3초마다 token.tscn을 하나씩 생성하고 세 개 뒤에 멈추세요. Mob0~Mob2로 이름을 지정하세요.', '''for i in range(3):
 	await get_tree().create_timer(0.3).timeout
 	var mob = load("res://fixtures/token.tscn").instantiate()
 	mob.name = "Mob" + str(i)
 	mob.position = Vector2(240 + i * 90, 180)
 	add_child(mob)
-$Status.text = "스폰 완료: 3"''',[('세 적이 생성됨','s.has_node("Mob0") and s.has_node("Mob1") and s.has_node("Mob2")'),('스폰 결과 출력',S+'.text.contains("3")')])
+$Status.text = "스폰 완료: 3"''',[('세 적이 생성됨','s.has_node("Mob0") and s.has_node("Mob1") and s.has_node("Mob2")','Mob0, Mob1, Mob2 (3개)',MOBS_FOUND,'반복문에서 mob.name = "Mob" + str(i)로 이름을 정하고 add_child(mob)를 호출했는지 확인하세요. range(3)의 i는 0, 1, 2이고, 0.3초씩 세 번 기다려도 약 0.9초면 끝나요.'),
+ ('스폰 결과 출력',S+'.text.contains("3")','3이 들어간 문구 (예: 스폰 완료: 3)',STATUS_TEXT,'반복문이 끝난 뒤 $Status.text = "스폰 완료: 3"처럼 생성한 개수를 표시하세요. 반복문 안에서 i를 출력하면 마지막 값이 3이 아니라 2가 돼요.')])
 add('collision-areas','겹치는 Area2D 감지하기','같은 위치의 Area2D 두 개를 만들고 감지한 영역 수를 Status에 출력하세요.', '''var areas: Array[Area2D] = []
 for i in range(2):
 	var area = Area2D.new()
@@ -45,7 +61,8 @@ for i in range(2):
 	areas.append(area)
 await get_tree().physics_frame
 await get_tree().physics_frame
-$Status.text = "겹친 영역: " + str(areas[0].get_overlapping_areas().size())''',[('Area0에서 Area1 감지','s.has_node("Area0") and s.get_node("Area0").get_overlapping_areas().size()==1'),('감지 결과 출력',S+'.text.contains("1")')])
+$Status.text = "겹친 영역: " + str(areas[0].get_overlapping_areas().size())''',[('Area0에서 Area1 감지','s.has_node("Area0") and s.get_node("Area0") is Area2D and s.get_node("Area0").get_overlapping_areas().size()==1','겹친 영역 1개',node_value('Area0','("겹친 영역 "+str(@.get_overlapping_areas().size())+"개" if @ is Area2D else "Area2D가 아님")'),'두 Area2D 모두 shape를 지정한 CollisionShape2D 자식이 있어야 겹침을 감지해요. 이름을 Area0, Area1로 정하고 같은 위치에 둔 뒤 add_child()로 씬에 추가하세요.'),
+ ('감지 결과 출력',S+'.text.contains("1")','1이 들어간 문구 (예: 겹친 영역: 1)',STATUS_TEXT,'add_child() 직후에는 물리 엔진이 아직 겹침을 계산하지 않아 0이 나와요. await get_tree().physics_frame을 두 번 기다린 뒤 get_overlapping_areas().size()를 Status에 표시하세요.')])
 add('first-3d-loop','3D 장면의 카메라 설정하기','준비된 3D 장면에서 카메라를 (0,0,5)에 놓고 Mesh를 Y축으로 45도 회전하세요.', '''camera.position = Vector3(0,0,5)
 camera.make_current()
 mesh.rotation_degrees.y = 45
@@ -88,7 +105,8 @@ score.offset_left = -140
 score.offset_right = -24
 score.offset_top = 24
 score.offset_bottom = 56
-$Status.text = "오른쪽 여백 24px"''',[('Score 생성','s.has_node("HUD/Score")'),('오른쪽 앵커와 여백','s.has_node("HUD/Score") and s.get_node("HUD/Score").anchor_right==1 and s.get_node("HUD/Score").offset_right==-24')])
+$Status.text = "오른쪽 여백 24px"''',[('Score 생성','s.has_node("HUD/Score")','HUD 아래 Score 있음','("HUD 아래 Score 있음" if s.has_node("HUD/Score") else ("Score가 HUD 밖에 있음" if s.has_node("Score") else ("HUD는 있지만 Score 없음" if s.has_node("HUD") else "HUD 없음")))','Control의 name을 "HUD"로 정해 add_child(hud)하고, Label의 name을 "Score"로 정해 hud.add_child(score)로 넣으세요. add_child(score)로 Main에 바로 넣으면 경로가 HUD/Score가 아니에요.'),
+ ('오른쪽 앵커와 여백','s.has_node("HUD/Score") and s.get_node("HUD/Score") is Control and s.get_node("HUD/Score").anchor_right==1 and s.get_node("HUD/Score").offset_right==-24','anchor_right 1.0, offset_right -24.0',node_value('HUD/Score','("anchor_right %s, offset_right %s" % [@.anchor_right, @.offset_right] if @ is Control else "Control이 아님")'),'anchor_right = 1은 부모의 오른쪽 끝을 기준으로 삼아요. 여백 24px은 기준선보다 왼쪽이므로 offset_right = -24로 쓰세요. +24로 쓰면 오른쪽 밖으로 나가고, anchor_right가 0이면 왼쪽 끝 기준이 돼요.')])
 add('import-pipeline','이미지에서 실제 Texture 만들기','32×32 Image를 주황색으로 채우고 ImageTexture로 만들어 Sprite2D에 지정하세요.', '''var image = Image.create(32,32,false,Image.FORMAT_RGBA8)
 image.fill(Color(1,0.5,0.1))
 var sprite = Sprite2D.new()
@@ -106,7 +124,8 @@ set_meta("shared",b)
 set_meta("copy",c)
 $Status.text = "b=%d / c=%d" % [b.damage,c.damage]''',[('공유 Resource는 20','s.has_meta("shared") and s.get_meta("shared").damage==20'),('복제 Resource는 10','s.has_meta("copy") and s.get_meta("copy").damage==10')],preamble='class WeaponData extends Resource:\n\t@export var damage: int = 10\n')
 add('gdscript-data','배열을 함수로 집계하기','prices 배열의 합계를 sum_prices 함수로 구해 Status에 Total: 60을 출력하세요.', '''var total = sum_prices([10,20,30])
-$Status.text = "Total: " + str(total)''',[('다른 입력에도 합계 계산','s.has_method("sum_prices") and s.sum_prices([2,3,7])==12'),('화면 합계 60',S+'.text=="Total: 60"')],preamble='func sum_prices(prices: Array) -> int:\n\tvar total: int = 0\n\tfor price in prices:\n\t\ttotal += price\n\treturn total\n')
+$Status.text = "Total: " + str(total)''',[('다른 입력에도 합계 계산','s.has_method("sum_prices") and s.sum_prices([2,3,7])==12','sum_prices([2, 3, 7]) = 12','("sum_prices([2, 3, 7]) = "+str(s.sum_prices([2,3,7])) if s.has_method("sum_prices") else "sum_prices 함수 없음")','함수 안에서 60이나 [10,20,30]을 직접 쓰지 말고 매개변수 prices를 for price in prices:로 순회해 total에 더한 뒤 return total 하세요. 시작 코드의 return 0이 남아 있으면 항상 0이 나와요.'),
+ ('화면 합계 60',S+'.text=="Total: 60"','Total: 60',STATUS_TEXT,'_ready()에서 sum_prices([10,20,30])의 결과를 "Total: " + str(total)로 Status에 넣으세요. 대소문자와 콜론 뒤 공백 한 칸까지 같아야 해요.')],preamble='func sum_prices(prices: Array) -> int:\n\tvar total: int = 0\n\tfor price in prices:\n\t\ttotal += price\n\treturn total\n')
 add('exported-properties','내보낸 속성을 인스턴스에서 바꾸기','@export speed의 기본값을 200으로 선언하고, _ready에서 현재 speed를 Status에 출력하세요. Inspector는 90을 전달합니다.', '''$Status.text = "Speed: %.0f" % speed
 $Player.position.x += speed''',[('인스턴스 속성값 90','s.get("speed")==90'),('속성으로 X=210',P+'.position.x==210'),('출력 Speed: 90',S+'.text=="Speed: 90"')],preamble='@export var speed: float = 200\n')
 add('groups-autoload','그룹 전체를 찾아 변경하기','적 세 개를 enemies 그룹에 넣고 set_group으로 모두 숨기세요.', '''for i in range(3):

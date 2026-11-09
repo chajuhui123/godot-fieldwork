@@ -1,11 +1,18 @@
 """Editorial corrections and outcome checks, reviewed against Godot 4.5 (2026-11-05)."""
 def apply(out):
- def check(id,label,expr,requires_rendering=False):
-  import json
-  l=out[id]; l['checker']=l['checker'].replace('\n\t]\n',',\n\t\t'+json.dumps({'name':label,'requires_rendering':requires_rendering},ensure_ascii=False)[:-1]+',"pass":bool('+expr+')}\n\t]\n');l['expected']+=' · '+label
+ import json
+ def check(id,label,expr,requires_rendering=False,expected=None,actual=None,hint=None):
+  # expected/hint are Korean text; actual is a GDScript expression that must not fail on missing nodes.
+  feedback='' if expected is None else ',"expected":'+json.dumps(expected,ensure_ascii=False)+',"actual":str('+actual+'),"hint":'+json.dumps(hint,ensure_ascii=False)
+  l=out[id]; l['checker']=l['checker'].replace('\n\t]\n',',\n\t\t'+json.dumps({'name':label,'requires_rendering':requires_rendering},ensure_ascii=False)[:-1]+',"pass":bool('+expr+')'+feedback+'}\n\t]\n');l['expected']+=' · '+label
+ def instance_state(name):
+  n='s.get_node("'+name+'")'
+  return '("'+name+' 없음" if not s.has_node("'+name+'") else ("'+name+' Node2D가 아님" if not '+n+' is Node2D else "'+name+' "+str('+n+'.position)+" "+('+n+'.scene_file_path if '+n+'.scene_file_path!="" else "씬 파일 없음")))'
  def scope(id,text):out[id]['scope']=' '.join(filter(None,[out[id]['scope'],text]))
  P='s.get_node("Player")'; M='s.get_node("Preview/World/Stage/Mesh")'
- check('instancing','두 인스턴스의 좌표와 원본 씬','s.has_node("A") and s.has_node("B") and s.get_node("A").position==Vector2(240,180) and s.get_node("B").position==Vector2(400,180) and s.get_node("A").scene_file_path=="res://fixtures/token.tscn" and s.get_node("B").scene_file_path=="res://fixtures/token.tscn"')
+ check('instancing','두 인스턴스의 좌표와 원본 씬','s.has_node("A") and s.has_node("B") and s.get_node("A") is Node2D and s.get_node("B") is Node2D and s.get_node("A").position==Vector2(240,180) and s.get_node("B").position==Vector2(400,180) and s.get_node("A").scene_file_path=="res://fixtures/token.tscn" and s.get_node("B").scene_file_path=="res://fixtures/token.tscn"',
+  expected='A (240.0, 180.0) / B (400.0, 180.0), 둘 다 res://fixtures/token.tscn',actual=instance_state('A')+'+" / "+'+instance_state('B'),
+  hint='Node2D.new()처럼 직접 만든 노드는 원본 씬 경로가 비어 있어요. load("res://fixtures/token.tscn")로 받은 PackedScene을 instantiate()해 A는 (240, 180), B는 (400, 180)에 두세요.')
  check('first-3d-loop','카메라 위치 (0,0,5)','s.get_node("Preview/World/Stage/Camera").position.is_equal_approx(Vector3(0,0,5))')
  check('3d-transforms','Y축 45도 회전','absf('+M+'.rotation_degrees.y-45)<0.1')
  check('paths','중앙 Y=180 및 씬 경로','s.has_node("Token") and s.get_node("Token").position.y==180 and s.get_node("Token").scene_file_path=="res://fixtures/token.tscn"')
