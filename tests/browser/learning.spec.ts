@@ -59,7 +59,11 @@ test("existing progress and drafts survive the switch to React, including on mob
     );
   });
   await page.reload();
-  await page.getByRole("link", { name: "학습 바로가기" }).click();
+  // 이어하기 기록이 없던 기존 사용자는 첫 미완료 수업으로 안내된다.
+  await expect(page.locator(".home-resume-note")).toHaveText(
+    "다음 수업 · 02 노드와 씬",
+  );
+  await page.getByRole("link", { name: "처음부터 보기" }).click();
   await expect(page.locator("#progress-label")).toHaveText("기본 1 / 65 완료");
   await page.getByRole("button", { name: "코드", exact: true }).click();
   await expect(
@@ -72,4 +76,25 @@ test("existing progress and drafts survive the switch to React, including on mob
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
+});
+
+test("home offers to continue the last opened lesson", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".home-intro .home-primary")).toHaveText(
+    /학습 바로가기/,
+  );
+  await page.goto("/#signals");
+  await expect(page.locator("#lesson-title")).toHaveText("시그널 연결");
+  await page.goto("/#home");
+  const resume = page.locator(".home-intro .home-primary");
+  await expect(resume).toHaveText(/이어하기/);
+  await expect(page.locator(".home-resume-note")).toHaveText(
+    "마지막 수업 · 03 시그널 연결",
+  );
+  await expect(page.locator(".home-nav-primary")).toHaveAttribute(
+    "href",
+    "#signals",
+  );
+  await resume.click();
+  await expect(page.locator("#lesson-title")).toHaveText("시그널 연결");
 });

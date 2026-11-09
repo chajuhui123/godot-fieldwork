@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import type { ResumeTarget } from "../resume";
 
 function GameDemo({ src, alt }: { src: string; alt: string }) {
   const image = useRef<HTMLImageElement>(null),
@@ -50,7 +51,7 @@ function GameDemo({ src, alt }: { src: string; alt: string }) {
     </>
   );
 }
-export function Home() {
+export function Home({ resume }: { resume: ResumeTarget | null }) {
   const [paused, setPaused] = useState(false);
   return (
     <main id="home" className="home" tabIndex={-1}>
@@ -91,12 +92,31 @@ export function Home() {
           <p className="home-lead">
             GDScript를 직접 쓰고, 실행하며 배우는 Godot.
           </p>
-          <a className="home-primary" href="#editor">
-            학습 바로가기{" "}
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 12h15m-6-6 6 6-6 6" />
-            </svg>
-          </a>
+          {resume ? (
+            <div className="home-resume">
+              <a className="home-primary" href={"#" + resume.lesson.id}>
+                이어하기{" "}
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 12h15m-6-6 6 6-6 6" />
+                </svg>
+              </a>
+              <p className="home-resume-note">
+                {resume.source === "last" ? "마지막 수업" : "다음 수업"} ·{" "}
+                {String(resume.number).padStart(2, "0")} {resume.lesson.title}
+                {resume.done ? " (완료)" : ""}
+              </p>
+              <a className="home-text-link" href="#editor">
+                처음부터 보기
+              </a>
+            </div>
+          ) : (
+            <a className="home-primary" href="#editor">
+              학습 바로가기{" "}
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 12h15m-6-6 6 6-6 6" />
+              </svg>
+            </a>
+          )}
         </div>
       </section>
 

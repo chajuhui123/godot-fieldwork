@@ -51,3 +51,5 @@
 .home .home-intro .home-primary{min-height:56px;min-width:200px;justify-content:center;padding:16px 32px}
 
 .home-replay{width:44px;min-height:44px;justify-content:center;padding:12px;gap:0}.home-replay svg{width:20px;height:20px;flex-shrink:0}
+
+.home-resume{display:grid;justify-items:center;gap:12px;text-align:center}.home .home-resume .home-resume-note{font-size:14px;line-height:1.6;color:#596a80;margin:0}

@@ -1,6 +1,7 @@
 import { lazy, useRef, Suspense, useEffect, useState } from "react";
 import { lessons } from "./data/courses";
 import { useProgress } from "./progress";
+import { rememberLesson, resumeTarget } from "./resume";
 import { Home } from "./components/Home";
 import { Header, Sidebar } from "./components/Shell";
 import { Icons } from "./components/Icons";
@@ -21,6 +22,10 @@ export function App() {
     window.addEventListener("hashchange", change);
     return () => window.removeEventListener("hashchange", change);
   }, []);
+  useEffect(() => {
+    if (lesson) rememberLesson(lesson.id);
+  }, [lesson]);
+  const resume = lesson ? null : resumeTarget(progress);
   const target = lesson ? "lesson-workspace" : "home";
   useEffect(() => {
     menu.current?.close();
@@ -48,6 +53,7 @@ export function App() {
       <Icons />
       <Header
         home={!lesson}
+        resumeHref={resume ? "#" + resume.lesson.id : undefined}
         openMenu={() => menu.current?.showModal()}
         progress={progress}
         reset={() => {
@@ -93,7 +99,7 @@ export function App() {
           </Suspense>
         </div>
       ) : (
-        <Home />
+        <Home resume={resume} />
       )}
     </>
   );

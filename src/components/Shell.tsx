@@ -8,8 +8,10 @@ export function Header({
   progress,
   reset,
   openMenu,
+  resumeHref,
 }: {
   home: boolean;
+  resumeHref?: string;
   progress: Progress;
   reset: () => void;
   openMenu: () => void;
@@ -36,8 +38,8 @@ export function Header({
             <a className="home-nav-secondary" href="credits.html">
               출처 안내
             </a>
-            <a className="home-nav-primary" href="#editor">
-              학습 시작 →
+            <a className="home-nav-primary" href={resumeHref ?? "#editor"}>
+              {resumeHref ? "이어하기 →" : "학습 시작 →"}
             </a>
           </nav>
         ) : (
