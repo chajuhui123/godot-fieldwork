@@ -1,0 +1,136 @@
+/* Learning rhythm: 8px controls, 16px related copy, 32px groups, 56px stages. */
+.lesson-workspace{--lesson-section-gap:56px;--lesson-group-gap:32px}
+.lesson-workspace .lesson-heading{align-items:flex-start;gap:24px;padding-bottom:64px}
+.lesson-workspace .lesson-heading .route-label{margin:0 0 12px}
+.lesson-workspace .lesson-heading h1{margin:0;line-height:1.3}
+.lesson-workspace .lesson-summary{margin:16px 0 0;line-height:1.75}
+.lesson-workspace .status-badge{margin-top:4px;line-height:24px;flex-shrink:0}
+.lesson-workspace .brief-concept{padding:0;margin:0 0 24px}
+.lesson-workspace .brief-concept h2{margin:0 0 16px}
+.lesson-workspace .brief-concept p{line-height:1.75}
+.lesson-workspace .concept-trap{margin-top:24px}
+.lesson-workspace .concept-trap b{margin-bottom:8px}
+.lesson-workspace #prerequisite-links{margin-top:16px}
+.lesson-workspace>.workshop-note{margin:0 0 32px;font-size:12px;line-height:1.8}
+.lesson-workspace .workshop{margin:0;padding:40px 0 0}
+.lesson-workspace .live-heading{align-items:baseline;gap:8px 24px}
+.lesson-workspace .live-heading h2{margin:0;font-size:24px;line-height:1.4}
+.lesson-workspace .live-heading>span{line-height:1.6}
+.lesson-workspace .live-heading+p{margin:16px 0 0;line-height:1.75}
+.lesson-workspace .workshop .live-scope{margin:24px 0 0;padding:0;line-height:1.75}
+.lesson-workspace .live-scope b{margin-bottom:8px}
+.lesson-workspace .live-toolbar{display:grid;grid-template-columns:auto minmax(0,1fr) repeat(3,auto);gap:8px;align-items:center;margin-top:24px;padding:12px}
+.lesson-workspace .live-toolbar #live-status{min-width:0;margin:0 8px;line-height:1.5;overflow-wrap:anywhere}
+.lesson-workspace .workshop .live-toolbar button{margin:0;min-height:40px;white-space:nowrap}
+.lesson-workspace .live-game-label{padding:12px 16px;line-height:20px}
+.lesson-workspace .live-save{padding:12px 16px;line-height:1.6}
+.lesson-workspace .live-inspector{padding:20px}
+.lesson-workspace .workshop .live-inspector h3{margin:0 0 12px;line-height:1.5}
+.lesson-workspace .live-tip{margin:0 0 16px;line-height:1.7}
+.lesson-workspace .live-properties{gap:16px}
+.lesson-workspace .live-inspector label{gap:8px;margin-bottom:16px;line-height:1.5}
+.lesson-workspace .live-inspector .live-properties label{margin-bottom:0}
+.lesson-workspace .live-inspector details{margin-top:16px}
+.lesson-workspace .live-output{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;margin-top:32px;align-items:start}
+.lesson-workspace .live-output>div{min-width:0}
+.lesson-workspace .workshop .live-output h3{margin:0 0 12px;line-height:1.5}
+.lesson-workspace .live-output p{margin:0 0 12px;line-height:1.75}
+.lesson-workspace .live-output p:last-child{margin-bottom:0}
+.lesson-workspace #live-tests{margin:12px 0;padding:0}
+.lesson-workspace #live-tests:empty{display:none}
+.lesson-workspace #live-tests li{align-items:baseline;line-height:1.6;padding:8px 0}
+.lesson-workspace .live-help{padding:0;margin-top:8px}
+.lesson-workspace .live-output+.live-help{margin-top:32px}
+.lesson-workspace .live-help>summary{display:flex;align-items:baseline;gap:12px;min-height:48px;padding:12px 0;list-style:none;line-height:24px}
+.lesson-workspace .live-help>summary::before{content:'';display:block;position:relative;top:-1px;width:8px;height:8px;flex:0 0 8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg)}
+.lesson-workspace .live-help[open]>summary::before{transform:rotate(45deg)}
+.lesson-workspace .live-help>p{margin:12px 0 16px;line-height:1.75}
+.lesson-workspace .live-help>pre{margin:16px 0;padding:20px}
+.lesson-workspace .live-help>ol{margin:16px 0;padding-left:24px}
+.lesson-workspace .live-help>button{margin-bottom:16px}
+.lesson-workspace .live-challenge{margin:32px 0 16px;line-height:1.75}
+.lesson-workspace .live-challenge b{display:block;margin-bottom:8px}
+.lesson-workspace .workshop>.workshop-note:last-child{margin:0;font-size:12px;line-height:1.8}
+.lesson-workspace .quiz-section,.lesson-workspace .transfer-section{margin-top:56px;padding-top:40px}
+.lesson-workspace .deep-section{padding-top:56px}
+.lesson-workspace .section-heading{align-items:baseline;gap:16px;margin-bottom:24px}
+.lesson-workspace .section-heading h2{margin:0;line-height:1.4}
+.lesson-workspace .section-heading p{margin:12px 0 0;line-height:1.75}
+.lesson-workspace .state-text{line-height:24px}
+.lesson-workspace .quiz-option{padding:16px;line-height:1.7;min-height:56px}
+.lesson-workspace .challenge-option{padding:16px;gap:12px;align-items:flex-start;line-height:1.7}
+.lesson-workspace .challenge-option input{margin-top:4px;flex-shrink:0}
+.lesson-workspace #challenge-form>.primary-button{margin-top:24px}
+.lesson-workspace .feedback:empty{display:none}
+.lesson-workspace .feedback:not(:empty){margin-top:16px;line-height:1.75}
+.lesson-workspace .lesson-footer{margin-top:56px;padding-top:0;gap:24px;align-items:center;flex-wrap:wrap}
+@media(max-width:780px){
+ .lesson-workspace{padding:32px 24px 64px}
+ .lesson-workspace .lesson-heading{flex-direction:column;gap:12px}
+ .lesson-workspace .status-badge{margin-top:0}
+ .lesson-workspace .workshop{padding-top:32px}
+ .lesson-workspace .live-heading{gap:8px}
+ .lesson-workspace .live-heading h2{font-size:22px}
+ .lesson-workspace .live-toolbar{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 8px}
+ .lesson-workspace .live-file{grid-column:1}
+ .lesson-workspace .live-toolbar #live-status{grid-column:2/4;margin:0;font-size:11px}
+ .lesson-workspace .live-toolbar button{padding:8px;font-size:12px}
+ .lesson-workspace .live-inspector{padding:16px}
+ .lesson-workspace .live-output{display:grid;grid-template-columns:1fr;gap:24px}
+ .lesson-workspace .live-output>div{margin-bottom:0}
+ .lesson-workspace .quiz-section,.lesson-workspace .transfer-section{margin-top:40px;padding-top:32px}
+ .lesson-workspace .deep-section{padding-top:40px}
+ .lesson-workspace .section-heading{gap:12px}
+ .lesson-workspace .lesson-footer{margin-top:40px;gap:16px}
+}
+.lesson-workspace .lesson-summary,.lesson-workspace .brief-concept p,.lesson-workspace .workshop>p,.lesson-workspace .section-heading p{word-break:keep-all;overflow-wrap:anywhere}
+
+/* Reading rhythm inspired by the Daangn article: left-aligned prose and quiet dot breaks. */
+.lesson-workspace .lesson-heading,
+.lesson-workspace .brief-concept,
+.lesson-workspace .workshop,
+.lesson-workspace .section-heading,
+.lesson-workspace .transfer-section{text-align:left}
+.lesson-workspace .lesson-summary,
+.lesson-workspace #brief-concept,
+.lesson-workspace .live-heading+p,
+.lesson-workspace .workshop .live-scope,
+.lesson-workspace .live-help>p,
+.lesson-workspace .live-help li,
+.lesson-workspace .live-challenge,
+.lesson-workspace .section-heading p,
+.lesson-workspace .transfer-section>p,
+.lesson-workspace #capstone-description{font-size:16px;line-height:2;max-width:728px;text-align:left;word-break:keep-all;overflow-wrap:anywhere}
+.lesson-workspace .brief-concept h2,
+.lesson-workspace .transfer-section h2{font-size:24px;line-height:1.4;margin-bottom:40px}
+.lesson-workspace .concept-trap{margin-top:48px;line-height:1.9;max-width:728px}
+.lesson-workspace .concept-trap b{margin-bottom:12px}
+.lesson-workspace .live-heading+p,
+.lesson-workspace .section-heading p{margin-top:40px}
+.lesson-workspace .workshop .live-scope{margin-top:48px}
+.lesson-workspace .live-help>p{margin:48px 0}
+.lesson-workspace .live-help>pre{margin:48px 0}
+.lesson-workspace .live-help>ol{margin:40px 0 48px}
+.lesson-workspace .live-help li{padding-bottom:24px}
+.lesson-workspace .live-help li p{margin-top:8px;line-height:2}
+.lesson-workspace .live-help>summary{padding-inline:0}
+.lesson-workspace .live-challenge{margin:56px 0 40px}
+.lesson-workspace .live-challenge b{margin-bottom:16px}
+.lesson-workspace .section-heading{margin-bottom:40px}
+.lesson-workspace>.workshop-note{margin-bottom:0;max-width:728px;text-align:left}
+/* Only reading-stage dividers change. Inputs, editor panels and choices retain borders. */
+.lesson-workspace .workshop,
+.lesson-workspace .practice-section,
+.lesson-workspace .quiz-section,
+.lesson-workspace .transfer-section{border-top:0;border-bottom:0;margin-top:0;padding-top:80px}
+.lesson-workspace .workshop::before,
+.lesson-workspace .practice-section::before,
+.lesson-workspace .quiz-section::before,
+.lesson-workspace .transfer-section::before{content:'';display:block;width:40px;height:8px;margin:0 auto 80px;background:center/40px 8px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='8' viewBox='0 0 40 8'%3E%3Cg fill='%23808b99'%3E%3Ccircle cx='8' cy='4' r='2.5'/%3E%3Ccircle cx='20' cy='4' r='2.5'/%3E%3Ccircle cx='32' cy='4' r='2.5'/%3E%3C/g%3E%3C/svg%3E")}
+.lesson-workspace .deep-section{padding-top:96px}
+@media(max-width:780px){
+ .lesson-workspace .brief-concept h2,.lesson-workspace .transfer-section h2{font-size:22px}
+ .lesson-workspace .workshop,.lesson-workspace .practice-section,.lesson-workspace .quiz-section,.lesson-workspace .transfer-section{padding-top:64px}
+ .lesson-workspace .workshop::before,.lesson-workspace .practice-section::before,.lesson-workspace .quiz-section::before,.lesson-workspace .transfer-section::before{margin-bottom:64px}
+ .lesson-workspace .deep-section{padding-top:80px}
+}

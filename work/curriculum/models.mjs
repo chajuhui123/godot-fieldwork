@@ -1,0 +1,39 @@
+// Reference math models used by the curriculum verification tools.
+const advancedModels=(()=>{
+ const figure=(body,caption)=>`<figure class="lab-figure"><svg viewBox="0 0 400 220" role="img" aria-label="${caption}">${body}</svg><figcaption>${caption}</figcaption></figure>`;
+ const text=(x,y,s)=>`<text x="${x}" y="${y}" fill="#d4dfef" text-anchor="middle">${s}</text>`;
+ const read=(title,body)=>`<div class="model-readout"><b>${title}</b>${body}</div>`;
+ const noise=(x,y)=>((x*37+y*61+x*y*13)%101)/100;
+ function render(id,v){const a=Number(v[0]),b=Number(v[1]);
+  if(id==='camera-projection'){const fov=[45,75,100][b],f=90/Math.tan(fov*Math.PI/360),h1=a===0?f/2:60,h2=a===0?f/4:60;return figure([h1,h2].map((h,i)=>`<rect x="${100+i*180-h/2}" y="${105-h/2}" width="${h}" height="${h}" fill="#405777" stroke="#8eb8df"/>${text(100+i*180,175,`거리 ${i===0?2:4}`)}`).join(''),`${a===0?'원근':'직교'} 투영 · 같은 크기의 두 상자 · 원근 FOV ${fov}° · 높이 비 ${a===0?'2:1':'1:1'}`)}
+  if(id==='mesh-lod'){const distance=[2,10,20][a],tri=b===0?12000:distance<5?12000:distance<15?3000:750;return read(`삼각형 ${tri.toLocaleString('en-US')}개`,`<p>거리 ${distance} · ${b===0?'고밀도 고정':'학습용 거리 규칙'}</p><p>최고 세부 수준 대비 기하 수 ${(tri/12000*100).toFixed(2)}%</p><p>FPS 개선율이 아닙니다. Godot의 실제 자동 LOD는 화면 크기와 설정에 따라 달라집니다.</p>`)}
+  if(id==='shader-uv'){const scale=[1,2,4][a];let cells='';for(let x=0;x<64;x++){let u=(x+.5)/64*scale;u=b===1?u-Math.floor(u):Math.min(u,.999);cells+=`<rect x="${24+x*5.5}" y="40" width="5.6" height="128" fill="${u<.5?'#8eb8df':'#202531'}"/>`}return figure(cells,`U × ${scale} · ${b===1?'Repeat':'Clamp'} · 밝고 어두운 한 쌍이 한 주기`)}
+  if(id==='vertex-displacement'){const count=[2,16][a];const points=Array.from({length:count+1},(_,i)=>{const x=i/count*4*Math.PI;return [24+i/count*352,110-Math.sin(x)*56]});return figure(`<path d="M24 110H376" stroke="#687a94"/><polyline points="${points.map(p=>p.join(',')).join(' ')}" fill="none" stroke="#8eb8df" stroke-width="2"/>${points.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="3" fill="#d4dfef"/>`).join('')}`,`${count}분할 · y = sin(x) 샘플을 잇는 단면 · 충돌과 법선은 별도`)}
+  if(id==='shader-dissolve'){const threshold=[.2,.5,.8][a];let cells='',kept=0;for(let y=0;y<10;y++)for(let x=0;x<20;x++){const keep=b===0?noise(x,y)>=threshold:noise(x,y)<=threshold;kept+=Number(keep);cells+=`<rect x="${20+x*18}" y="${20+y*18}" width="16" height="16" fill="${keep?'#8eb8df':'#202531'}"/>`}return figure(cells,`Threshold ${threshold} · 남은 셀 ${kept}/200 · 고정 샘플 모형, 실제 노이즈 분포와 다를 수 있음`)}
+  if(id==='shader-fresnel'){const dot=[0,.5,1][a],power=[1,2,5][b],value=Math.pow(1-dot,power),pts=Array.from({length:41},(_,i)=>`${30+i*8.5},${180-Math.pow(1-i/40,power)*140}`).join(' ');return figure(`<path d="M30 30V180H370" fill="none" stroke="#687a94"/><polyline points="${pts}" fill="none" stroke="#8eb8df" stroke-width="2"/><circle cx="${30+dot*340}" cy="${180-value*140}" r="5" fill="#fff"/>${text(200,210,'dot(N,V): 0 → 1')}`,`(1 − ${dot})^${power} = ${value.toFixed(3)} · 가장자리 강조의 근사 곡선`)}
+  if(id==='gpu-particles'){const amount=[60,120,240][a],life=[1,2,4][b];return read(`평균 ${amount/life}개 / 초`,`<p>Amount ${amount} ÷ Lifetime ${life}초</p><p>연속 방출 · Amount Ratio 1 · 균등 발생 모형</p><p>입자 수와 실제 렌더링 비용은 같은 단위가 아닙니다.</p>`)}
+  if(id==='physics-interpolation')return read('이전 0 → 표시 5 → 현재 10',`<p>선택한 표시 위치: ${[0,5,10][a]}</p><p>Alpha 0.5: 0 + (10 − 0) × 0.5 = 5</p><p>순간이동: ${b===1?'새 위치의 이력으로 초기화':'이전 위치와 섞여 이동 궤적이 보일 수 있음'}</p>`);
+  if(id==='network-snapshots')return read('150ms의 표시 위치',`<p>100ms: X=10 → 200ms: X=30</p><p>Alpha = (150−100)/(200−100) = 0.5</p><p>X = 10 + (30−10) × 0.5 = 20</p><p>선택한 위치: ${[10,20,30][a]} · 오래된 샘플: ${b===0?'시각 기준 처리':'무조건 적용하면 과거로 되돌아갈 수 있음'}</p>`);
+  if(id==='compute-shaders'){const groups=[15,16,1000][a],calls=groups*64;return read(`${groups} × 64 = ${calls.toLocaleString('en-US')}개 호출`,`<p>데이터: 1,000개 · ${calls<1000?`미처리 ${1000-calls}개`:`초과 호출 ${calls-1000}개`}</p><p>${b===0?'인덱스 0~999만 처리':'범위 밖 접근 위험: 실행 전 범위 검사 필요'}</p><p>GPU를 실행하지 않는 Dispatch 산술 모형입니다.</p>`)}
+  return null;
+ }
+ return {render,noise};
+})();
+ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const kinds={editor:'position','delta-motion':'motion',ui:'anchors','canvas-coordinates':'coordinates','animation-player':'timeline','custom-resource':'resource','collision-areas':'collision','audio-buses':'audio',loop:'ticks'};
+ export function model(id,values,extra){
+  const advanced=advancedModels.render(id,values,extra);if(advanced)return advanced;
+  const n=i=>Number(values[i]);const kind=kinds[id];
+  const figure=(body,caption)=>`<figure class="lab-figure"><svg viewBox="0 0 400 180" role="img" aria-label="${esc(caption)}">${body}</svg><figcaption>${esc(caption)}</figcaption></figure>`;
+  const rect=(x,y,w,h,label)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" fill="#405777" stroke="#8eb8df"/><text x="${x+w/2}" y="${y+h/2+5}" text-anchor="middle" fill="#fff">${esc(label)}</text>`;
+  if(kind==='position'){const x=[120,200,320][n(0)]??120,y=[0,80,200][n(1)]??80;return figure(`<path d="M24 16V156H380" fill="none" stroke="#8193ab"/>${rect(24+x*.85,24+y*.45,48,32,'Player')}`,`Position (${x}, ${y}) · 표시 배율을 축소한 위치 모형`)}
+  if(kind==='motion'){const fps=[30,60,120][n(1)]??30,perFrame=n(0)===0?4:240/fps,distance=perFrame*fps;return `<div class="model-readout"><b>1초 뒤 ${distance.toFixed(0)} px</b><p>${fps} FPS × 프레임당 ${perFrame.toFixed(1)} px</p><table><caption>같은 식으로 FPS만 바꾸면</caption><thead><tr><th>FPS</th><th>1초 이동</th></tr></thead><tbody>${[30,60,120].map(f=>`<tr><td>${f}</td><td>${n(0)===0?4*f:240} px</td></tr>`).join('')}</tbody></table></div>`}
+  if(kind==='anchors'){const width=Number(extra)||640,a=[0,1,.5][n(0)]??0,offs=[[-124,-24],[24,124],[0,100]][n(1)]??[0,100],left=width*a+offs[0],right=width*a+offs[1],scale=360/width;return figure(`<rect x="20" y="20" width="360" height="140" fill="#202531" stroke="#8193ab"/>${rect(20+left*scale,40,Math.max(1,(right-left)*scale),32,'Score')}`,`부모 ${width}px · Label 왼쪽 ${left}px / 오른쪽 ${right}px · 오른쪽 여백 ${width-right}px`)}
+  if(kind==='coordinates')return figure(`<path d="M20 140H380" stroke="#8193ab"/>${rect(120,32,220,80,'Parent X=100')}${rect(160,80,100,32,'Child X=40')}`, '회전 0 · 배율 1: Child global X = 100 + 40 = 140');
+  if(kind==='timeline'){const t=Number(extra??0.5);return figure(`<path d="M40 128H360" stroke="#8193ab"/>${rect(40+t*260,48,48,40,'Node')}<circle cx="${40+t*320}" cy="128" r="5" fill="#8eb8df"/>`,`${t.toFixed(2)}초 · 선형 보간 X = ${(t*200).toFixed(0)} (0초: 0 / 1초: 200)`)}
+  if(kind==='resource'){const copy=n(0)===1;return `<div class="model-readout"><p>${copy?'A → 독립 Resource / B → 원본 Resource':'A와 B → 같은 Resource'}</p><b>A의 damage를 10 → 20으로 바꾸면</b><dl><dt>Enemy A</dt><dd>20</dd><dt>Enemy B</dt><dd>${copy?10:20}</dd></dl><p>단일 숫자 속성 모형입니다. 중첩 리소스 복제는 별도 확인합니다.</p></div>`}
+  if(kind==='collision'){const hit=n(0)===1&&n(1)===1;return figure(`${rect(32,54,130,64,'Sensor')}${rect(238,54,130,64,'Enemy · L2')}<path d="M162 86H238" stroke="${hit?'#8eb8df':'#758197'}" stroke-dasharray="${hit?'none':'4 4'}"/>`,hit?'겹침 상태 + Mask 2 + Monitoring On → 감지':'겹침 상태라도 마스크 또는 Monitoring 조건이 맞지 않아 감지 안 됨')}
+  if(kind==='audio'){const bus=['Master','SFX','Music'][n(0)]??'Master',quiet=['Master','Music','SFX'][n(1)]??'Master',affected=bus===quiet||quiet==='Master';return `<div class="model-readout"><b>효과음 → ${esc(bus)}${bus==='Master'?'':' → Master'}</b><p>${esc(quiet)} 음량을 낮췄습니다.</p><p>효과음: ${affected?'작아짐':'유지'} / 음악(Music): ${quiet==='Master'||quiet==='Music'?'작아짐':'유지'}</p><small>버스 관계 모형 · 실제 오디오 재생 없음</small></div>`}
+  if(kind==='ticks')return `<div class="model-readout"><b>안정적인 1초 구간의 가정</b><p>렌더 120 FPS → _process 약 120회</p><p>물리 60 Hz → _physics_process 약 60회</p><p>한 렌더 프레임에 물리 틱이 없거나 여러 번일 수도 있습니다.</p></div>`;
+  return null;
+ }

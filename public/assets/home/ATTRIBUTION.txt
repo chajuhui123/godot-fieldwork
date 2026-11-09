@@ -1,0 +1,26 @@
+Home images — Godot 실습 노트
+
+Godot Engine documentation 4.5
+Copyright: Juan Linietsky, Ariel Manzur, and the Godot Engine community
+License: Creative Commons Attribution 3.0 Unported
+https://creativecommons.org/licenses/by/3.0/
+Original files unchanged. Display size adjusted; animated images may be shown as still frames by the page.
+
+godot-3d-editor.webp
+https://docs.godotengine.org/en/4.5/_images/editor_intro_workspace_3d.webp
+gdscript-editor.webp
+https://docs.godotengine.org/en/4.5/_images/editor_intro_workspace_script.webp
+dodge-the-creeps.gif
+https://docs.godotengine.org/en/4.5/_images/dodge_preview.gif
+squash-the-creeps.gif
+https://docs.godotengine.org/en/4.5/_images/squash-the-creeps-final.gif
+
+fieldwork-workspace.png
+Actual Fieldwork workshop screenshot. © 2026 Juhee Cha.
+Godot logo and external components retain their respective licenses; see ../../credits.html.
+
+Godot hero icon (godot-icon.svg)
+Copyright (c) 2017 Andrea Calabró
+CC BY 4.0 International: https://creativecommons.org/licenses/by/4.0/
+Source: https://github.com/godotengine/godot/blob/4.5.1-stable/icon.svg
+Original SVG unchanged; CSS translation and rotation added on the page.

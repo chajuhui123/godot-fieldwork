@@ -1,0 +1,52 @@
+.coverage-note{font-size:14px;color:#59677a;padding:24px 0;border-bottom:1px solid #ccd3de}.coverage-note summary{cursor:pointer;color:#28364d;padding:8px 0}.coverage-note p{max-width:72ch;margin:16px 0}.coverage-note summary:hover{color:#496585}
+.brief-concept{padding:32px 0;border-bottom:1px solid #ccd3de}.brief-concept h2,.transfer-section h2{font-size:20px;line-height:28px;color:#28364d;margin:0 0 16px}.brief-concept p{max-width:72ch;line-height:1.7;margin:0}.brief-concept .concept-trap{font-size:14px;color:#59677a;margin-top:16px}.concept-trap b{display:block;color:#28364d;margin-bottom:4px}
+.deep-section{padding:64px 0;border-bottom:1px solid #ccd3de}.model-note{font-size:12px;color:#59677a;margin:0 0 16px;line-height:1.6}.lab-shell{border:1px solid #454e65;border-radius:4px;overflow:hidden;background:#292f40;color:#edf2fa}.lab-toolbar{display:flex;justify-content:space-between;gap:16px;padding:12px 16px;background:#202531;border-bottom:1px solid #454e65;font-size:12px;color:#bdcce0}.lab-body{display:grid;grid-template-columns:minmax(200px,1fr) minmax(0,1.3fr)}.lab-controls{padding:24px;display:grid;gap:12px;align-content:start;border-right:1px solid #454e65}.lab-controls label{font-size:14px;color:#bdcce0}.lab-controls select{min-width:0;width:100%;min-height:44px;font:inherit;font-size:14px;background:#202531;color:#edf2fa;border:1px solid #687a94;border-radius:4px;padding:8px;white-space:normal}.lab-controls input[type=range]{width:100%;accent-color:#8eb8df;min-height:32px}.lab-apply,.lab-reset{min-height:44px;padding:8px 16px;border:1px solid #687a94;border-radius:4px;background:#405777;color:white;font:inherit;font-size:14px}.lab-apply{margin-top:12px}.lab-apply:hover{background:#4e688d}.lab-reset{background:transparent;color:#bdcce0}.lab-reset:hover{background:#35435a}.lab-preview{background:#323b4f;min-width:0;padding:24px;display:grid;align-content:center}.preview-empty{font-size:14px;color:#bdcce0;line-height:1.7}.lab-figure{margin:0;min-width:0}.lab-figure svg{width:100%;height:auto;display:block;stroke:none;font:14px Pretendard,sans-serif}.lab-figure figcaption{font-size:14px;color:#d4dfef;line-height:1.7;margin-top:16px;overflow-wrap:anywhere}.model-readout{font-size:14px;overflow-wrap:anywhere}.model-readout b{font-size:16px}.model-readout p{color:#d4dfef;line-height:1.7}.model-readout dl{display:grid;grid-template-columns:1fr;gap:8px}.model-readout dt{color:#b8c8de}.model-readout dd{margin:0 0 8px}.model-readout table{width:100%;border-collapse:collapse;text-align:left;font-variant-numeric:tabular-nums}.model-readout caption{text-align:left;padding:16px 0 8px;color:#bdcce0}.model-readout th,.model-readout td{padding:8px;border-bottom:1px solid #687a94}.model-readout small{font-size:12px;color:#bdcce0}.lesson-workspace .lab-shell :focus-visible{outline-color:#a9cdec}
+#challenge-options{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}.challenge-option{display:flex;gap:12px;align-items:flex-start;padding:16px;border:1px solid #ccd3de;border-radius:4px;cursor:pointer;font-size:16px;line-height:1.6;transition:background-color 160ms,border-color 160ms}.challenge-option:hover{background:#f0f3f7}.challenge-option:has(input:checked){background:#e8eef6;border-color:#496585}.challenge-option input,.transfer-check input{accent-color:#28364d;width:20px;height:20px;flex-shrink:0;margin:4px 0}.transfer-section{padding:48px 0 0}.transfer-section>p{line-height:1.7;max-width:72ch}.transfer-check{display:flex;gap:12px;align-items:center;font-size:14px;cursor:pointer;min-height:44px}.transfer-check:hover{color:#496585}
+#capstone-checks{display:grid;gap:8px}#capstone-title{font-size:20px;line-height:1.4;color:#28364d}#capstone-description{line-height:1.7;max-width:72ch}
+.course-jump{display:block;font-size:12px;color:#59677a;margin:16px 0 8px}#course-jump{width:100%;min-height:40px;padding:8px;border:1px solid #ccd3de;border-radius:4px;background:#fff;color:#28364d;font:14px Pretendard,sans-serif}#prerequisite-links{margin-top:20px;font-size:14px;color:#59677a}#prerequisite-links a{color:#344965;text-underline-offset:4px}#prerequisite-links a:hover{color:#17263d;text-decoration-thickness:2px}
+@media(min-width:1600px){.deep-section{padding-block:96px}}
+@media(max-width:780px){.deep-section{padding:48px 0}.lab-body{grid-template-columns:1fr}.lab-controls{border-right:0;border-bottom:1px solid #454e65;padding:16px}.lab-preview{padding:16px;min-height:160px}.brief-concept{padding-block:24px}.challenge-option{padding:16px 12px}.lab-controls select{font-size:16px}}
+
+/* Reading rhythm: rules only at practice, assessment and real-editor stages. */
+.lesson-workspace{--bg-neutral:#fbfcfe;--bg-weak:#edf2f8;--stroke-neutral:#d6dfeb;--fg-neutral:#25344b;--fg-subtle:#596a80;background:var(--bg-neutral)}
+.lesson-workspace .bridge-content{background:#eaf0f8}
+.lesson-workspace .tip[open] p,.lesson-workspace .coverage-note summary:hover,.lesson-workspace .tip summary:hover{background:#edf2f8}
+.lesson-workspace .lab-shell,.lesson-workspace .editor-sim{background:#293449;border-color:#42536d}
+.lesson-workspace .lab-toolbar,.lesson-workspace .editor-toolbar,.lesson-workspace .editor-bottom{background:#202a3b;border-color:#42536d}
+.lesson-workspace .lab-preview,.lesson-workspace .viewport{background:#33435b}
+.lesson-workspace .lab-controls,.lesson-workspace .dock{background:#293449;border-color:#42536d}
+.lesson-workspace .lab-controls select{background-color:#1e293b;border-color:#607695}
+.lesson-workspace .choice-card[aria-pressed=true],.lesson-workspace .challenge-option:has(input:checked){background:#e4edf9;border-color:#577ba8}
+.curriculum{display:flex;flex-direction:column;overflow:hidden}
+.curriculum-scroll{flex:1;min-height:0;overflow:auto;scrollbar-color:#566781 #252d3e}
+.site-credit{display:flex;flex-direction:column;flex-shrink:0;gap:4px;margin-top:24px;padding:0 8px;color:#a0aec2;font-size:12px;line-height:20px}
+@media(max-width:780px){.curriculum{max-height:none}.curriculum-scroll{flex:none;max-height:140px}.site-credit{flex-direction:row;flex-wrap:wrap;gap:4px 16px;margin-top:16px;padding:0 8px;font-size:11px}}
+.site-credit a{color:inherit;text-decoration:none;text-underline-offset:4px}
+.site-credit a:hover{color:#e4ebf6;text-decoration:underline}
+.credit-link-note{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.lesson-workspace .lesson-heading{border:0;padding-bottom:24px}
+.lesson-workspace .coverage-note{border:0;padding:8px 0 24px}
+.lesson-workspace .brief-concept{border:0;padding:24px 0 16px}
+.lesson-workspace .practice-section,.lesson-workspace .concept-section,.lesson-workspace .quiz-section,.lesson-workspace .deep-section,.lesson-workspace .transfer-section{border:0;padding:48px 0 0;margin:0}
+.lesson-workspace .practice-section,.lesson-workspace .quiz-section,.lesson-workspace .transfer-section{border-top:1px solid #e0e5eb;margin-top:64px;padding-top:48px}
+.lesson-workspace .bridge-content{border:0}
+.lesson-workspace .inspector-block.tip{border:0;padding-top:8px}
+.lesson-workspace .lesson-footer{border:0;padding-top:48px}
+
+/* Native disclosure semantics, consistent marker placement in both themes. */
+.lesson-workspace .coverage-note summary,.lesson-workspace .tip summary{display:flex;align-items:center;gap:12px;min-height:48px;padding:12px 8px;list-style:none;border-radius:4px;line-height:24px;color:#344965}
+.lesson-workspace summary::-webkit-details-marker{display:none}
+.lesson-workspace .coverage-note summary::before,.lesson-workspace .tip summary::before{content:'';width:8px;height:8px;flex:0 0 8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);transition:transform 160ms ease}
+.lesson-workspace details[open]>summary::before{transform:rotate(45deg)}
+.lesson-workspace .coverage-note summary:hover,.lesson-workspace .tip summary:hover{background:#f0f3f7}
+.lesson-workspace .coverage-note>p{margin-left:28px}
+
+/* Keep native select keyboard/picker behavior; reserve space for one arrow. */
+#course-jump,.lab-controls select{appearance:none;-webkit-appearance:none;box-sizing:border-box;min-height:48px;height:48px;max-width:100%;padding:12px 40px 12px 12px;line-height:24px;font-family:var(--sans);font-size:14px;white-space:nowrap;text-overflow:ellipsis;background-repeat:no-repeat;background-position:right 12px center;background-size:16px 16px;cursor:pointer;transition:border-color 160ms ease,background-color 160ms ease}
+#course-jump{color-scheme:light;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%23344965' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.lab-controls select{color-scheme:dark;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%23bdcce0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.lab-controls select option{background:#202531;color:#edf2fa}
+#course-jump:hover{border-color:#7a899d}.lab-controls select:hover{border-color:#a9cdec}
+.lab-controls select:focus-visible{outline:2px solid #a9cdec;outline-offset:3px}
+.lab-field{min-width:0;display:grid;gap:8px}.lab-selected-value{margin:0;color:#bdcce0;font-size:12px;line-height:20px;overflow-wrap:anywhere}.lab-selected-value[hidden]{display:none}
+@media(max-width:780px){.lesson-workspace .practice-section,.lesson-workspace .quiz-section,.lesson-workspace .transfer-section{margin-top:48px;padding-top:32px}.lesson-workspace .concept-section,.lesson-workspace .deep-section{padding-top:40px}.lab-controls select{font-size:16px}.lab-controls{gap:24px}}

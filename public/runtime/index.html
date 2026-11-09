@@ -1,0 +1,14 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Godot 실행</title><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#141c2b;color:#cad8ec;font:14px/1.5 sans-serif}canvas{display:block;width:100%;height:100%;outline:none}#status{position:absolute;inset:0;display:grid;place-items:center;padding:16px;pointer-events:none;text-align:center}#status:empty{display:none}</style></head><body><canvas id="canvas" tabindex="0" aria-label="실행 중인 Godot 게임"></canvas><div id="status">Godot 엔진을 불러오는 중…</div><script src="engine.js"></script><script>
+(() => {
+ const params=JSON.parse(decodeURIComponent(location.hash.slice(1))),token=params.token,parentOrigin=params.parentOrigin;
+ let currentRun=0, started=false;
+ const emit=payload=>parent.postMessage({channel:'fieldwork',token,payload},parentOrigin);
+ window.fieldworkEmit=text=>{const data=JSON.parse(text);if(data.type==='ready'){started=true;document.querySelector('#status').textContent='';}emit(data)};
+ window.addEventListener('message',e=>{if(e.source!==parent||e.origin!==parentOrigin||e.data?.token!==token||e.data.channel!=='fieldwork'||e.data.type!=='run')return;currentRun=e.data.payload.run;if(window.fieldworkRun)window.fieldworkRun(JSON.stringify(e.data.payload))});
+ window.addEventListener('error',e=>emit({type:'fatal',message:e.message}));
+ window.addEventListener('unhandledrejection',e=>emit({type:'fatal',message:String(e.reason)}));
+ const out=(error,args)=>emit({type:'log',run:currentRun,error,message:args.map(String).join(' ')});
+ const engine=new Engine({executable:'engine',canvas:document.querySelector('#canvas'),canvasResizePolicy:2,focusCanvas:false,persistentPaths:[],fileSizes:{'engine.wasm':36145869,'engine.pck':2071284},onPrint:(...args)=>out(false,args),onPrintError:(...args)=>out(true,args),onProgress:(current,total)=>{if(started)return;const message=total?Math.round(current/total*100)+'%':'중…';document.querySelector('#status').textContent='Godot 엔진 로딩 '+message;emit({type:'loading',message})}});
+ engine.startGame().catch(error=>{document.querySelector('#status').textContent='실행 실패: '+error.message;emit({type:'fatal',message:String(error)})});
+})();
+</script></body></html>

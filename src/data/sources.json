@@ -1,0 +1,327 @@
+{
+  "editor": {
+    "title": "에디터 지도",
+    "docs": "https://docs.godotengine.org/ko/stable/getting_started/introduction/first_look_at_the_editor.html",
+    "reference": "https://docs.godotengine.org/en/4.5/getting_started/introduction/first_look_at_the_editor.html"
+  },
+  "nodes": {
+    "title": "노드와 씬",
+    "docs": "https://docs.godotengine.org/ko/stable/getting_started/step_by_step/nodes_and_scenes.html",
+    "reference": "https://docs.godotengine.org/en/4.5/getting_started/step_by_step/nodes_and_scenes.html"
+  },
+  "signals": {
+    "title": "시그널 연결",
+    "docs": "https://docs.godotengine.org/ko/stable/getting_started/step_by_step/signals.html",
+    "reference": "https://docs.godotengine.org/en/4.5/getting_started/step_by_step/signals.html"
+  },
+  "project-manager": {
+    "title": "프로젝트 매니저",
+    "docs": "https://docs.godotengine.org/ko/stable/getting_started/introduction/first_look_at_the_editor.html",
+    "reference": "https://docs.godotengine.org/en/4.5/getting_started/introduction/first_look_at_the_editor.html"
+  },
+  "instancing": {
+    "title": "씬 인스턴스",
+    "docs": "https://docs.godotengine.org/ko/stable/getting_started/step_by_step/instancing.html",
+    "reference": "https://docs.godotengine.org/en/4.5/getting_started/step_by_step/instancing.html"
+  },
+  "attach-script": {
+    "title": "스크립트 붙이기",
+    "docs": "https://docs.godotengine.org/ko/stable/getting_started/step_by_step/scripting_first_script.html",
+    "reference": "https://docs.godotengine.org/en/4.5/getting_started/step_by_step/scripting_first_script.html"
+  },
+  "delta-motion": {
+    "title": "델타와 이동",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/scripting/idle_and_physics_processing.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/scripting/idle_and_physics_processing.html"
+  },
+  "input-events": {
+    "title": "입력 이벤트",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/inputs/inputevent.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/inputs/inputevent.html"
+  },
+  "first-2d-loop": {
+    "title": "첫 2D 게임 구조",
+    "docs": "https://docs.godotengine.org/ko/stable/getting_started/first_2d_game/index.html",
+    "reference": "https://docs.godotengine.org/en/4.5/getting_started/first_2d_game/index.html"
+  },
+  "collision-areas": {
+    "title": "충돌체와 Area",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/physics/physics_introduction.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/physics/physics_introduction.html"
+  },
+  "first-3d-loop": {
+    "title": "첫 3D 게임 구조",
+    "docs": "https://docs.godotengine.org/ko/stable/getting_started/first_3d_game/index.html",
+    "reference": "https://docs.godotengine.org/en/4.5/getting_started/first_3d_game/index.html"
+  },
+  "run-debug": {
+    "title": "실행과 디버그",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/scripting/debug/overview_of_debugging_tools.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/scripting/debug/overview_of_debugging_tools.html"
+  },
+  "paths": {
+    "title": "리소스와 경로",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/scripting/resources.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/scripting/resources.html"
+  },
+  "input": {
+    "title": "Input Map",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/inputs/inputevent.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/inputs/inputevent.html"
+  },
+  "ui": {
+    "title": "Control과 앵커",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/ui/size_and_anchors.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/ui/size_and_anchors.html"
+  },
+  "import-pipeline": {
+    "title": "에셋 가져오기",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/assets_pipeline/import_process.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/assets_pipeline/import_process.html"
+  },
+  "custom-resource": {
+    "title": "커스텀 Resource",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/scripting/resources.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/scripting/resources.html"
+  },
+  "gdscript-data": {
+    "title": "GDScript 기본 문법",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/scripting/gdscript/gdscript_basics.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/scripting/gdscript/gdscript_basics.html"
+  },
+  "exported-properties": {
+    "title": "내보낸 속성",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/scripting/gdscript/gdscript_exports.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/scripting/gdscript/gdscript_exports.html"
+  },
+  "groups-autoload": {
+    "title": "그룹과 Autoload",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/scripting/singletons_autoload.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/scripting/singletons_autoload.html"
+  },
+  "canvas-coordinates": {
+    "title": "2D 좌표계",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/2d/2d_transforms.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/2d/2d_transforms.html"
+  },
+  "tilemaps": {
+    "title": "TileMap과 TileSet",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/2d/using_tilemaps.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/2d/using_tilemaps.html"
+  },
+  "physics-bodies": {
+    "title": "2D 물리 바디",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/physics/physics_introduction.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/physics/physics_introduction.html"
+  },
+  "3d-transforms": {
+    "title": "3D Transform",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/3d/using_transforms.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/3d/using_transforms.html"
+  },
+  "containers": {
+    "title": "Control 컨테이너",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/ui/gui_containers.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/ui/gui_containers.html"
+  },
+  "themes": {
+    "title": "UI 테마",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/ui/gui_skinning.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/ui/gui_skinning.html"
+  },
+  "animation-player": {
+    "title": "AnimationPlayer",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/animation/introduction.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/animation/introduction.html"
+  },
+  "animation-tree": {
+    "title": "AnimationTree",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/animation/animation_tree.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/animation/animation_tree.html"
+  },
+  "audio-buses": {
+    "title": "오디오 버스",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/audio/audio_buses.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/audio/audio_buses.html"
+  },
+  "shaders": {
+    "title": "셰이더와 Material",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/shaders/introduction_to_shaders.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/shaders/introduction_to_shaders.html"
+  },
+  "navigation": {
+    "title": "내비게이션",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/navigation/navigation_introduction_2d.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/navigation/navigation_introduction_2d.html"
+  },
+  "saving-games": {
+    "title": "게임 저장",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/io/saving_games.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/io/saving_games.html"
+  },
+  "multiplayer": {
+    "title": "고수준 멀티플레이어",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/networking/high_level_multiplayer.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/networking/high_level_multiplayer.html"
+  },
+  "localization": {
+    "title": "현지화",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/i18n/internationalizing_games.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/i18n/internationalizing_games.html"
+  },
+  "export-profile": {
+    "title": "내보내기와 프로파일링",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/scripting/debug/the_profiler.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/scripting/debug/the_profiler.html"
+  },
+  "loop": {
+    "title": "메인 루프",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/scripting/idle_and_physics_processing.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/scripting/idle_and_physics_processing.html"
+  },
+  "rendering": {
+    "title": "렌더링 흐름",
+    "docs": "https://docs.godotengine.org/ko/stable/engine_details/architecture/internal_rendering_architecture.html",
+    "reference": "https://docs.godotengine.org/en/4.5/engine_details/architecture/internal_rendering_architecture.html"
+  },
+  "builds": {
+    "title": "편집기와 내보내기",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/export/exporting_for_dedicated_servers.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/export/exporting_for_dedicated_servers.html"
+  },
+  "object-memory": {
+    "title": "Object와 메모리",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/best_practices/node_alternatives.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/best_practices/node_alternatives.html"
+  },
+  "tree-notifications": {
+    "title": "SceneTree 알림",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/scripting/scene_tree.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/scripting/scene_tree.html"
+  },
+  "server-architecture": {
+    "title": "서버 아키텍처",
+    "docs": "https://docs.godotengine.org/en/stable/engine_details/engine_api/custom_godot_servers.html",
+    "reference": "https://docs.godotengine.org/en/4.5/engine_details/architecture/custom_godot_servers.html"
+  },
+  "renderers": {
+    "title": "렌더러 선택",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/rendering/renderers.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/rendering/renderers.html"
+  },
+  "rendering-rid": {
+    "title": "RenderingServer와 RID",
+    "docs": "https://docs.godotengine.org/ko/stable/engine_details/architecture/internal_rendering_architecture.html",
+    "reference": "https://docs.godotengine.org/en/4.5/engine_details/architecture/internal_rendering_architecture.html"
+  },
+  "thread-safety": {
+    "title": "스레드 안전성",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/performance/thread_safe_apis.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/performance/thread_safe_apis.html"
+  },
+  "compile-engine": {
+    "title": "엔진 컴파일",
+    "docs": "https://docs.godotengine.org/ko/stable/engine_details/development/compiling/index.html",
+    "reference": "https://docs.godotengine.org/en/4.5/engine_details/development/compiling/index.html"
+  },
+  "modules-gdextension": {
+    "title": "모듈과 GDExtension",
+    "docs": "https://docs.godotengine.org/en/stable/engine_details/engine_api/gdextension/index.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/scripting/gdextension/index.html"
+  },
+  "editor-plugins": {
+    "title": "에디터 플러그인",
+    "docs": "https://docs.godotengine.org/ko/stable/tutorials/plugins/editor/making_plugins.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/plugins/editor/making_plugins.html"
+  },
+  "camera-projection": {
+    "title": "카메라 투영과 클리핑",
+    "docs": "https://docs.godotengine.org/en/stable/classes/class_camera3d.html",
+    "reference": "https://docs.godotengine.org/en/4.5/classes/class_camera3d.html"
+  },
+  "pbr-material": {
+    "title": "PBR 재질과 색 공간",
+    "docs": "https://docs.godotengine.org/en/stable/tutorials/3d/standard_material_3d.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/3d/standard_material_3d.html"
+  },
+  "global-illumination": {
+    "title": "간접광과 GI 선택",
+    "docs": "https://docs.godotengine.org/en/stable/tutorials/3d/global_illumination/introduction_to_global_illumination.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/3d/global_illumination/introduction_to_global_illumination.html"
+  },
+  "mesh-lod": {
+    "title": "메시 LOD와 화면 크기",
+    "docs": "https://docs.godotengine.org/en/stable/tutorials/3d/mesh_lod.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/3d/mesh_lod.html"
+  },
+  "occlusion-culling": {
+    "title": "가려진 물체와 오클루전",
+    "docs": "https://docs.godotengine.org/en/stable/tutorials/3d/occlusion_culling.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/3d/occlusion_culling.html"
+  },
+  "multimesh": {
+    "title": "MultiMesh와 공간 분할",
+    "docs": "https://docs.godotengine.org/en/stable/tutorials/performance/using_multimesh.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/performance/using_multimesh.html"
+  },
+  "shader-uv": {
+    "title": "UV와 텍스처 샘플링",
+    "docs": "https://docs.godotengine.org/en/stable/tutorials/shaders/shader_reference/shading_language.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/shaders/shader_reference/shading_language.html"
+  },
+  "vertex-displacement": {
+    "title": "정점 변위와 메시 밀도",
+    "docs": "https://docs.godotengine.org/en/stable/tutorials/shaders/your_first_shader/your_first_3d_shader.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/shaders/your_first_shader/your_first_3d_shader.html"
+  },
+  "shader-dissolve": {
+    "title": "디졸브와 임계값",
+    "docs": "https://docs.godotengine.org/en/stable/tutorials/shaders/shader_reference/spatial_shader.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/shaders/shader_reference/spatial_shader.html"
+  },
+  "shader-fresnel": {
+    "title": "Fresnel과 시선 방향",
+    "docs": "https://docs.godotengine.org/en/stable/tutorials/shaders/shader_reference/spatial_shader.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/shaders/shader_reference/spatial_shader.html"
+  },
+  "screen-shaders": {
+    "title": "화면 텍스처와 후처리",
+    "docs": "https://docs.godotengine.org/en/stable/tutorials/shaders/screen-reading_shaders.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/shaders/screen-reading_shaders.html"
+  },
+  "gpu-particles": {
+    "title": "GPU 파티클과 가시 경계",
+    "docs": "https://docs.godotengine.org/en/stable/tutorials/3d/particles/properties.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/3d/particles/properties.html"
+  },
+  "async-loading": {
+    "title": "비동기 로딩과 씬 전환",
+    "docs": "https://docs.godotengine.org/en/stable/tutorials/io/background_loading.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/io/background_loading.html"
+  },
+  "physics-interpolation": {
+    "title": "물리 보간과 순간이동",
+    "docs": "https://docs.godotengine.org/en/stable/tutorials/physics/interpolation/using_physics_interpolation.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/physics/interpolation/using_physics_interpolation.html"
+  },
+  "navigation-avoidance": {
+    "title": "내비게이션 회피와 이동",
+    "docs": "https://docs.godotengine.org/en/stable/tutorials/navigation/navigation_using_navigationagents.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/navigation/navigation_using_navigationagents.html"
+  },
+  "runtime-state": {
+    "title": "게임 상태와 일시 정지",
+    "docs": "https://docs.godotengine.org/en/stable/tutorials/scripting/pausing_games.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/scripting/pausing_games.html"
+  },
+  "network-snapshots": {
+    "title": "네트워크 스냅샷과 보간",
+    "docs": "https://docs.godotengine.org/en/stable/tutorials/networking/high_level_multiplayer.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/networking/high_level_multiplayer.html"
+  },
+  "compute-shaders": {
+    "title": "컴퓨트 셰이더와 버퍼",
+    "docs": "https://docs.godotengine.org/en/stable/tutorials/shaders/compute_shaders.html",
+    "reference": "https://docs.godotengine.org/en/4.5/tutorials/shaders/compute_shaders.html"
+  }
+}

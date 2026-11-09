@@ -1,0 +1,14 @@
+import "./styles/styles.css";
+import "./styles/refined.css";
+import "./styles/seed-content.css";
+import "./styles/godot-content.css";
+import "./styles/learning-depth.css";
+import "./styles/workshops.css";
+import "./styles/live-workshop.css";
+import "./styles/home.css";
+import "./styles/home-editorial.css";
+import "./styles/lesson-spacing.css";
+import "./styles/studio.css";
+import { createRoot } from "react-dom/client";
+import { App } from "./App";
+createRoot(document.getElementById("root")!).render(<App />);

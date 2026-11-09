@@ -1,0 +1,252 @@
+{
+  "inputs": {
+    "work/editor-deps/node_modules/@marijn/find-cluster-break/src/index.js": {
+      "bytes": 4270,
+      "imports": [],
+      "format": "esm"
+    },
+    "work/editor-deps/node_modules/@codemirror/state/dist/index.js": {
+      "bytes": 147400,
+      "imports": [
+        {
+          "path": "work/editor-deps/node_modules/@marijn/find-cluster-break/src/index.js",
+          "kind": "import-statement",
+          "original": "@marijn/find-cluster-break"
+        }
+      ],
+      "format": "esm"
+    },
+    "work/editor-deps/node_modules/style-mod/src/style-mod.js": {
+      "bytes": 7042,
+      "imports": [],
+      "format": "esm"
+    },
+    "work/editor-deps/node_modules/w3c-keyname/index.js": {
+      "bytes": 2630,
+      "imports": [],
+      "format": "esm"
+    },
+    "work/editor-deps/node_modules/crelt/index.js": {
+      "bytes": 951,
+      "imports": [],
+      "format": "esm"
+    },
+    "work/editor-deps/node_modules/@codemirror/view/dist/index.js": {
+      "bytes": 495588,
+      "imports": [
+        {
+          "path": "work/editor-deps/node_modules/@codemirror/state/dist/index.js",
+          "kind": "import-statement",
+          "original": "@codemirror/state"
+        },
+        {
+          "path": "work/editor-deps/node_modules/style-mod/src/style-mod.js",
+          "kind": "import-statement",
+          "original": "style-mod"
+        },
+        {
+          "path": "work/editor-deps/node_modules/w3c-keyname/index.js",
+          "kind": "import-statement",
+          "original": "w3c-keyname"
+        },
+        {
+          "path": "work/editor-deps/node_modules/crelt/index.js",
+          "kind": "import-statement",
+          "original": "crelt"
+        }
+      ],
+      "format": "esm"
+    },
+    "work/editor-deps/node_modules/@lezer/common/dist/index.js": {
+      "bytes": 84581,
+      "imports": [],
+      "format": "esm"
+    },
+    "work/editor-deps/node_modules/@lezer/highlight/dist/index.js": {
+      "bytes": 29921,
+      "imports": [
+        {
+          "path": "work/editor-deps/node_modules/@lezer/common/dist/index.js",
+          "kind": "import-statement",
+          "original": "@lezer/common"
+        }
+      ],
+      "format": "esm"
+    },
+    "work/editor-deps/node_modules/@codemirror/streamparser/dist/index.js": {
+      "bytes": 5120,
+      "imports": [],
+      "format": "esm"
+    },
+    "work/editor-deps/node_modules/@codemirror/language/dist/index.js": {
+      "bytes": 97134,
+      "imports": [
+        {
+          "path": "work/editor-deps/node_modules/@lezer/common/dist/index.js",
+          "kind": "import-statement",
+          "original": "@lezer/common"
+        },
+        {
+          "path": "work/editor-deps/node_modules/@codemirror/state/dist/index.js",
+          "kind": "import-statement",
+          "original": "@codemirror/state"
+        },
+        {
+          "path": "work/editor-deps/node_modules/@codemirror/view/dist/index.js",
+          "kind": "import-statement",
+          "original": "@codemirror/view"
+        },
+        {
+          "path": "work/editor-deps/node_modules/@lezer/highlight/dist/index.js",
+          "kind": "import-statement",
+          "original": "@lezer/highlight"
+        },
+        {
+          "path": "work/editor-deps/node_modules/style-mod/src/style-mod.js",
+          "kind": "import-statement",
+          "original": "style-mod"
+        },
+        {
+          "path": "work/editor-deps/node_modules/@codemirror/streamparser/dist/index.js",
+          "kind": "import-statement",
+          "original": "@codemirror/streamparser"
+        },
+        {
+          "path": "work/editor-deps/node_modules/@codemirror/streamparser/dist/index.js",
+          "kind": "import-statement",
+          "original": "@codemirror/streamparser"
+        }
+      ],
+      "format": "esm"
+    },
+    "work/editor-deps/node_modules/@codemirror/commands/dist/index.js": {
+      "bytes": 84624,
+      "imports": [
+        {
+          "path": "work/editor-deps/node_modules/@codemirror/state/dist/index.js",
+          "kind": "import-statement",
+          "original": "@codemirror/state"
+        },
+        {
+          "path": "work/editor-deps/node_modules/@codemirror/view/dist/index.js",
+          "kind": "import-statement",
+          "original": "@codemirror/view"
+        },
+        {
+          "path": "work/editor-deps/node_modules/@codemirror/language/dist/index.js",
+          "kind": "import-statement",
+          "original": "@codemirror/language"
+        },
+        {
+          "path": "work/editor-deps/node_modules/@lezer/common/dist/index.js",
+          "kind": "import-statement",
+          "original": "@lezer/common"
+        }
+      ],
+      "format": "esm"
+    },
+    "work/editor-deps/node_modules/@codemirror/autocomplete/dist/index.js": {
+      "bytes": 90056,
+      "imports": [
+        {
+          "path": "work/editor-deps/node_modules/@codemirror/state/dist/index.js",
+          "kind": "import-statement",
+          "original": "@codemirror/state"
+        },
+        {
+          "path": "work/editor-deps/node_modules/@codemirror/view/dist/index.js",
+          "kind": "import-statement",
+          "original": "@codemirror/view"
+        },
+        {
+          "path": "work/editor-deps/node_modules/@codemirror/language/dist/index.js",
+          "kind": "import-statement",
+          "original": "@codemirror/language"
+        }
+      ],
+      "format": "esm"
+    },
+    "work/editor-deps/editor-entry.js": {
+      "bytes": 2747,
+      "imports": [
+        {
+          "path": "work/editor-deps/node_modules/@codemirror/state/dist/index.js",
+          "kind": "import-statement",
+          "original": "@codemirror/state"
+        },
+        {
+          "path": "work/editor-deps/node_modules/@codemirror/view/dist/index.js",
+          "kind": "import-statement",
+          "original": "@codemirror/view"
+        },
+        {
+          "path": "work/editor-deps/node_modules/@codemirror/commands/dist/index.js",
+          "kind": "import-statement",
+          "original": "@codemirror/commands"
+        },
+        {
+          "path": "work/editor-deps/node_modules/@codemirror/language/dist/index.js",
+          "kind": "import-statement",
+          "original": "@codemirror/language"
+        },
+        {
+          "path": "work/editor-deps/node_modules/@codemirror/autocomplete/dist/index.js",
+          "kind": "import-statement",
+          "original": "@codemirror/autocomplete"
+        },
+        {
+          "path": "work/editor-deps/node_modules/@lezer/highlight/dist/index.js",
+          "kind": "import-statement",
+          "original": "@lezer/highlight"
+        }
+      ],
+      "format": "esm"
+    }
+  },
+  "outputs": {
+    "dist/editor-bundle.js": {
+      "imports": [],
+      "exports": [],
+      "entryPoint": "work/editor-deps/editor-entry.js",
+      "inputs": {
+        "work/editor-deps/node_modules/@marijn/find-cluster-break/src/index.js": {
+          "bytesInOutput": 2329
+        },
+        "work/editor-deps/node_modules/@codemirror/state/dist/index.js": {
+          "bytesInOutput": 47137
+        },
+        "work/editor-deps/node_modules/style-mod/src/style-mod.js": {
+          "bytesInOutput": 2223
+        },
+        "work/editor-deps/node_modules/w3c-keyname/index.js": {
+          "bytesInOutput": 1495
+        },
+        "work/editor-deps/node_modules/@codemirror/view/dist/index.js": {
+          "bytesInOutput": 167017
+        },
+        "work/editor-deps/node_modules/@lezer/common/dist/index.js": {
+          "bytesInOutput": 20531
+        },
+        "work/editor-deps/node_modules/@lezer/highlight/dist/index.js": {
+          "bytesInOutput": 7084
+        },
+        "work/editor-deps/node_modules/@codemirror/streamparser/dist/index.js": {
+          "bytesInOutput": 1605
+        },
+        "work/editor-deps/node_modules/@codemirror/language/dist/index.js": {
+          "bytesInOutput": 23904
+        },
+        "work/editor-deps/node_modules/@codemirror/commands/dist/index.js": {
+          "bytesInOutput": 23240
+        },
+        "work/editor-deps/node_modules/@codemirror/autocomplete/dist/index.js": {
+          "bytesInOutput": 4404
+        },
+        "work/editor-deps/editor-entry.js": {
+          "bytesInOutput": 1845
+        }
+      },
+      "bytes": 302826
+    }
+  }
+}

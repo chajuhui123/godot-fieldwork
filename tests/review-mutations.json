@@ -1,0 +1,12 @@
+{
+  "instancing": ["Vector2(240 + i * 160, 180)", "Vector2(100 + i * 300, 180)"],
+  "3d-transforms": ["mesh.rotation_degrees.y = 45", "mesh.rotation_degrees.y = 0"],
+  "paths": ["Vector2(320,180)", "Vector2(320,90)"],
+  "groups-autoload": ["get_tree().set_group(\"enemies\",\"visible\",false)", "$Enemy0.visible = false"],
+  "tilemaps": ["Vector2i(1,0),0", "Vector2i(5,0),0"],
+  "containers": ["[\"Play\",\"Settings\",\"Quit\"]", "[\"A\",\"B\",\"C\"]"],
+  "pbr-material": ["Color(0.8,0.4,0.2)", "Color.WHITE"],
+  "global-illumination": ["environment.ambient_light_color = Color.WHITE", "environment.ambient_light_color = Color.RED"],
+  "gpu-particles": ["particles.emitting = true", "particles.emitting = false"],
+  "vertex-displacement": ["plane.subdivide_width = 32", "plane.subdivide_width = 0"]
+}
