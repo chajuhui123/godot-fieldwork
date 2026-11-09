@@ -4,7 +4,10 @@ test("a learner can edit, reload, run real GDScript, complete a quiz, and leave 
   page,
 }) => {
   await page.goto("/#editor");
-  await page.getByRole("button", { name: "Inspector", exact: true }).click();
+  // Inspector는 코드 오른쪽 도크다. 넓은 화면에서는 처음부터 열려 있다.
+  const inspector = page.getByRole("button", { name: "Inspector", exact: true });
+  if ((await inspector.getAttribute("aria-expanded")) !== "true")
+    await inspector.click();
   await page
     .getByRole("spinbutton", { name: "Player · Position X" })
     .fill("320");
@@ -20,6 +23,11 @@ test("a learner can edit, reload, run real GDScript, complete a quiz, and leave 
     timeout: 60000,
   });
   await expect(page.locator("#live-tests .passed")).toHaveCount(3);
+  // 채점하면 결과 탭이 자동으로 열리고, 툴바 배지가 통과를 알린다.
+  await expect(page.locator("#live-tests")).toBeVisible();
+  await expect(page.locator("#live-result")).toHaveText("모든 검사 통과");
+  await expect(page.locator("#live-result")).toHaveAttribute("data-state", "pass");
+  await page.getByRole("button", { name: /^Console/ }).click();
   await expect(page.locator("#live-console")).toContainText(
     "fieldwork smoke test",
   );
