@@ -134,3 +134,16 @@
  .lesson-workspace .workshop::before,.lesson-workspace .practice-section::before,.lesson-workspace .quiz-section::before,.lesson-workspace .transfer-section::before{margin-bottom:64px}
  .lesson-workspace .deep-section{padding-top:80px}
 }
+
+/* Substitute-exercise flag beside the lesson title: native disclosure, metadata scale. */
+.lesson-workspace .lesson-heading h1{word-break:keep-all;overflow-wrap:anywhere}
+.lesson-workspace .scope-flag{margin:12px 0 0;font-size:14px;line-height:1.6;color:var(--fg-subtle)}
+.lesson-workspace .scope-flag>summary{display:inline-flex;align-items:center;flex-wrap:wrap;gap:8px;min-height:32px;max-width:100%;cursor:pointer;list-style:none;border-radius:4px}
+.lesson-workspace .scope-flag>summary::-webkit-details-marker{display:none}
+.lesson-workspace .scope-flag-label{padding:2px 8px;border:1px solid var(--stroke-brand);border-radius:4px;background:var(--bg-brand);color:var(--fg-brand);font-size:12px;font-weight:600;line-height:20px;white-space:nowrap}
+.lesson-workspace .scope-flag-hint{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--fg-subtle);transition:color 160ms}
+.lesson-workspace .scope-flag-hint::after{content:'';width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg)}
+.lesson-workspace .scope-flag[open] .scope-flag-hint::after{transform:translateY(1px) rotate(-135deg)}
+.lesson-workspace .scope-flag>summary:hover .scope-flag-hint{color:var(--fg-brand)}
+.lesson-workspace .scope-flag>p{max-width:728px;margin:8px 0 0;padding:12px 16px;border-left:2px solid var(--stroke-brand);background:var(--bg-weak);color:var(--fg-neutral);word-break:keep-all;overflow-wrap:anywhere}
+@media(prefers-reduced-motion:reduce){.lesson-workspace .scope-flag-hint{transition:none}}
