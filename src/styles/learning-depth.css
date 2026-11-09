@@ -50,3 +50,43 @@
 .lab-controls select:focus-visible{outline:2px solid #a9cdec;outline-offset:3px}
 .lab-field{min-width:0;display:grid;gap:8px}.lab-selected-value{margin:0;color:#bdcce0;font-size:12px;line-height:20px;overflow-wrap:anywhere}.lab-selected-value[hidden]{display:none}
 @media(max-width:780px){.lesson-workspace .practice-section,.lesson-workspace .quiz-section,.lesson-workspace .transfer-section{margin-top:48px;padding-top:32px}.lesson-workspace .concept-section,.lesson-workspace .deep-section{padding-top:40px}.lab-controls select{font-size:16px}.lab-controls{gap:24px}}
+
+.sidebar-actions {
+  flex-shrink: 0;
+  margin-top: 16px;
+  padding: 12px 8px 0;
+  border-top: 1px solid rgba(160, 174, 194, 0.24);
+}
+.reset-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #a0aec2;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: color 160ms;
+}
+.reset-link svg {
+  width: 16px;
+  height: 16px;
+}
+.reset-link:hover {
+  color: #f1c1c3;
+}
+.reset-link:focus-visible {
+  outline: 2px solid #9fb6d6;
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reset-link {
+    transition: none;
+  }
+}
+#reset-dialog p {
+  word-break: keep-all;
+}
