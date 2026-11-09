@@ -1,4 +1,7 @@
 import { useRef, useState } from "react";
+import type { ResumeTarget } from "../resume";
+import { complete, type Progress } from "../progress";
+import { twoDTrack, trackProgress } from "../data/tracks";
 
 function GameDemo({ src, alt }: { src: string; alt: string }) {
   const image = useRef<HTMLImageElement>(null),
@@ -50,7 +53,14 @@ function GameDemo({ src, alt }: { src: string; alt: string }) {
     </>
   );
 }
-export function Home() {
+export function Home({
+  resume,
+  progress,
+}: {
+  resume: ResumeTarget | null;
+  progress: Progress;
+}) {
+  const track = trackProgress(twoDTrack, progress);
   const [paused, setPaused] = useState(false);
   return (
     <main id="home" className="home" tabIndex={-1}>
@@ -91,13 +101,79 @@ export function Home() {
           <p className="home-lead">
             GDScript를 직접 쓰고, 실행하며 배우는 Godot.
           </p>
-          <a className="home-primary" href="#editor">
-            학습 바로가기{" "}
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 12h15m-6-6 6 6-6 6" />
-            </svg>
-          </a>
+          {resume ? (
+            <div className="home-resume">
+              <a className="home-primary" href={"#" + resume.lesson.id}>
+                이어하기{" "}
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 12h15m-6-6 6 6-6 6" />
+                </svg>
+              </a>
+              <p className="home-resume-note">
+                {resume.source === "last" ? "마지막 수업" : "다음 수업"} ·{" "}
+                {String(resume.number).padStart(2, "0")} {resume.lesson.title}
+                {resume.done ? " (완료)" : ""}
+              </p>
+              <a className="home-text-link" href="#editor">
+                처음부터 보기
+              </a>
+            </div>
+          ) : (
+            <a className="home-primary" href="#editor">
+              학습 바로가기{" "}
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 12h15m-6-6 6 6-6 6" />
+              </svg>
+            </a>
+          )}
         </div>
+      </section>
+
+      <section className="home-track home-width" aria-labelledby="track-title">
+        <div className="home-track-head">
+          <div>
+            <p className="home-track-eyebrow">추천 트랙</p>
+            <h2 id="track-title">{twoDTrack.title}</h2>
+            <p>{twoDTrack.summary}</p>
+          </div>
+          <div className="home-track-status">
+            <p
+              className="home-track-count"
+              aria-label={`추천 트랙 진도 ${track.done} / ${track.total} 완료`}
+            >
+              {track.done} / {track.total}
+            </p>
+            {track.next ? (
+              <a className="home-primary" href={"#" + track.next.id}>
+                {track.done ? "트랙 이어가기" : "트랙 시작"}{" "}
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 12h15m-6-6 6 6-6 6" />
+                </svg>
+              </a>
+            ) : (
+              <p className="home-track-done">
+                트랙의 기본 학습을 모두 마쳤어요.
+              </p>
+            )}
+          </div>
+        </div>
+        <ol className="home-track-list">
+          {twoDTrack.lessons.map((l) => {
+            const done = complete(progress[l.id]);
+            return (
+              <li key={l.id} className={done ? "is-done" : undefined}>
+                <a href={"#" + l.id}>
+                  {l.title}
+                  {done && <span className="visually-hidden"> (완료)</span>}
+                </a>
+              </li>
+            );
+          })}
+        </ol>
+        <p className="home-track-note">
+          기존 수업을 순서대로 엮은 경로입니다. 한 게임을 처음부터 끝까지 만드는
+          과정은 아니며, 진도는 각 수업의 기본 완료 기록으로 계산합니다.
+        </p>
       </section>
 
       <section

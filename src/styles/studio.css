@@ -490,3 +490,9 @@
 .height-divider:hover, .height-divider:focus-visible, .studio-stack[data-dragging="true"] .height-divider { background: #435773; }
 .studio-stack[data-dragging="true"] { cursor: row-resize; user-select: none; }
 .studio-stack[data-dragging="true"] iframe { pointer-events: none; }
+
+.track-module summary{cursor:pointer;list-style:none}
+.track-module summary::-webkit-details-marker{display:none}
+.track-module summary b::before{content:"▸ "}
+.track-module[open] summary b::before{content:"▾ "}
+.track-module summary:focus-visible{outline:2px solid #577ba8;outline-offset:2px}
