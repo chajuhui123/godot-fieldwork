@@ -144,22 +144,22 @@
   background: #fff;
 }
 .studio .live-output .verdict-banner > .result-icon {
-  width: 24px;
-  height: 24px;
-  margin-top: 2px;
-  font-size: 14px;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  font-size: 12px;
 }
 .studio .live-output:not([data-state]) .verdict-banner > .result-icon {
   display: none;
 }
 .studio .live-output .verdict-banner strong {
   display: block;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 22px;
 }
 .studio .live-output .verdict-banner p {
   margin: 0;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.6;
   word-break: keep-all;
   overflow-wrap: anywhere;
@@ -179,6 +179,27 @@
 .studio .live-output[data-state="fail"] .verdict-banner strong,
 .studio .live-output[data-state="error"] .verdict-banner strong {
   color: #8f2329;
+}
+
+/* 결과 목록은 도크 안에서 많이 보이도록 한 단계 작은 글자로 쓴다. */
+.studio .tool-results .live-output .check-summary p,
+.studio .tool-results .live-output #live-tests strong {
+  font-size: 13px;
+}
+.studio .tool-results .live-output #live-tests li {
+  padding: 10px 12px;
+  font-size: 12px;
+}
+.studio .tool-results .live-output #live-tests dl,
+.studio .tool-results .live-output #live-tests dt,
+.studio .tool-results .live-output #live-tests dd,
+.studio .tool-results .live-output .check-hint,
+.studio .tool-results .live-output .workshop-note {
+  font-size: 12px;
+  line-height: 1.6;
+}
+.studio .tool-results .live-output #live-tests .check-state {
+  font-size: 11px;
 }
 
 /* --- Inspector 도크 (코드 오른쪽) --- */
