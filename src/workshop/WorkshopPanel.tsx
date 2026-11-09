@@ -7,6 +7,7 @@ import { draftKey, loadDraft, type SceneConfig } from "./types";
 import { createEditor } from "./editor";
 import { createSession, initialView } from "./session";
 import { downloadProject } from "./projects";
+import { EngineLoading } from "./EngineLoading";
 
 export const workshopGoals: Record<string, string> = {
   editor:
@@ -219,6 +220,7 @@ export function WorkshopPanel({
           </div>
           <div id="live-game" ref={gameHost}>
             {trace && <PositionTrace {...trace}/> }
+            {view.loading && <EngineLoading loading={view.loading} />}
             {!view.active && (
               <div className="preview-start">
                 <button type="button" onClick={() => run(false)}>

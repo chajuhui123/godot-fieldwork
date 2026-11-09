@@ -4,6 +4,7 @@ import { useProgress } from "./progress";
 import { Home } from "./components/Home";
 import { Header, Sidebar } from "./components/Shell";
 import { Icons } from "./components/Icons";
+import { LessonSkeleton } from "./components/LessonSkeleton";
 const LessonPage = lazy(() =>
   import("./components/LessonPage").then((module) => ({
     default: module.LessonPage,
@@ -78,11 +79,7 @@ export function App() {
             <Sidebar lesson={lesson} progress={progress} />
           </dialog>
           <Suspense
-            fallback={
-              <main className="lesson-workspace" aria-busy="true">
-                수업을 불러오는 중…
-              </main>
-            }
+            fallback={<LessonSkeleton />}
           >
             <LessonPage
               key={lesson.id + ":" + generation}
