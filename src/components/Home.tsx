@@ -99,7 +99,7 @@ export function Home({
         <div className="home-intro home-width">
           <h1 id="home-title">Godot Fieldwork</h1>
           <p className="home-lead">
-            GDScript를 직접 쓰고, 실행하며 배우는 Godot.
+            GDScript를 직접 쓰고, 실행하며 배우는 Godot
           </p>
           {resume ? (
             <div className="home-resume">
@@ -229,10 +229,6 @@ export function Home({
               </p>
             </li>
           </ol>
-          <p className="home-method-note">
-            자동 검사는 과제에 명시된 조건을 확인합니다. 화면의 변화도 함께
-            살펴보세요.
-          </p>
         </div>
       </section>
 
@@ -247,8 +243,8 @@ export function Home({
           </p>
           <p>
             Godot 공식 문서를 바탕으로 에디터 사용법부터 2D, 3D, 셰이더까지 65개
-            수업을 구성했습니다. 에디터 지도에서 각 영역의 역할을 먼저
-            익혀보세요.
+            수업을 구성했습니다. <br />
+            에디터 지도에서 각 영역의 역할을 먼저 익혀보세요.
           </p>
         </div>
         <figure>
@@ -276,6 +272,7 @@ export function Home({
         <div className="home-image-note">
           <p>
             Scene에서 노드를 선택하고 Inspector에서 속성을 바꿉니다.
+            <br />
             서비스에서는 관련 개념을 코드와 작은 실행 과제로 연습합니다.
           </p>
           <a className="home-text-link" href="#editor">
@@ -410,14 +407,18 @@ export function Home({
               </dd>
             </div>
             <div>
-              <dt>서비스 저장소</dt>
-              <dd>공개 준비 중</dd>
-            </div>
-            <div>
-              <dt>참고한 자료</dt>
+              <dt>참고 자료</dt>
               <dd>
                 <a href="https://docs.godotengine.org/ko/4.x/">
                   Godot 한국어 공식 문서
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt>소스 코드</dt>
+              <dd>
+                <a href="https://github.com/chajuhui123/godot-fieldwork">
+                  GitHub 저장소
                 </a>
               </dd>
             </div>
