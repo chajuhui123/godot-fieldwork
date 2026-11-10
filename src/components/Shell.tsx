@@ -242,16 +242,6 @@ export function Sidebar({
       </div>
       <div className="site-credit" aria-label="저작권 및 제작자">
         <span>© 2026 Juhee Cha</span>
-        <span>
-          제작{" "}
-          <a
-            href="https://github.com/chajuhui123"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Juhee Cha의 GitHub<span className="credit-link-note"> (새 탭)</span>
-          </a>
-        </span>
         <a
           href="https://github.com/chajuhui123/godot-fieldwork"
           target="_blank"
@@ -259,7 +249,13 @@ export function Sidebar({
         >
           GitHub 저장소<span className="credit-link-note"> (새 탭)</span>
         </a>
-        <a href="credits.html">문서 출처와 라이선스</a>
+        <a
+          href="https://github.com/chajuhui123/godot-fieldwork/issues/new/choose"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          이슈 제보<span className="credit-link-note"> (새 탭)</span>
+        </a>
       </div>
     </aside>
   );
