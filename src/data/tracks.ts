@@ -27,7 +27,8 @@ export const twoDTrack: Track = {
   id: "2d-first-steps",
   title: "2D 게임 첫걸음",
   summary:
-    "문법부터 노드·이동·입력·시그널·스폰·충돌·UI까지, 2D 게임에 필요한 기본기를 10개 수업으로 이어서 익힙니다.",
+    // \n에서 줄을 나눠 "UI까지," 뒤로 읽는 호흡을 맞춘다(홈에서 pre-line으로 표시).
+    "문법부터 노드·이동·입력·시그널·스폰·충돌·UI까지,\n2D 게임에 필요한 기본기를 10개 수업으로 이어서 익힙니다.",
   lessons: twoDIds.map((id) => {
     const lesson = lessons.find((l) => l.id === id);
     if (!lesson) throw new Error("추천 트랙에 없는 수업 ID: " + id);

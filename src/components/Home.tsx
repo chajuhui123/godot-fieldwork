@@ -134,7 +134,7 @@ export function Home({
           <div>
             <p className="home-track-eyebrow">추천 트랙</p>
             <h2 id="track-title">{twoDTrack.title}</h2>
-            <p>{twoDTrack.summary}</p>
+            <p className="home-track-summary">{twoDTrack.summary}</p>
           </div>
           <div className="home-track-status">
             <p
@@ -170,10 +170,6 @@ export function Home({
             );
           })}
         </ol>
-        <p className="home-track-note">
-          기존 수업을 순서대로 엮은 경로입니다. 한 게임을 처음부터 끝까지 만드는
-          과정은 아니며, 진도는 각 수업의 기본 완료 기록으로 계산합니다.
-        </p>
       </section>
 
       <section
