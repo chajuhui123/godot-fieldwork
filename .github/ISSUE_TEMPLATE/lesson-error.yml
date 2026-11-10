@@ -8,7 +8,7 @@ body:
     attributes:
       label: 수업 주소
       description: 브라우저 주소창의 주소를 붙여 주세요.
-      placeholder: https://chajuhui123.github.io/godot-fieldwork/#editor
+      placeholder: https://godot-fieldwork.vercel.app/#editor
     validations:
       required: true
   - type: textarea
