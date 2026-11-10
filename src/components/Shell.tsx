@@ -20,13 +20,30 @@ export function Header({
     <>
       <header className="app-header">
         <a className="brand" href="#home" aria-label="Godot Fieldwork 홈">
-          <img
+          <svg
             className="brand-logo"
-            src="assets/godot-logo.svg"
-            alt="Godot"
-            width="104"
-            height="42"
-          />
+            viewBox="0 0 32 32"
+            width="32"
+            height="32"
+            aria-hidden="true"
+          >
+            {/* Fieldwork 자체 표식: 실습 노트의 줄과 통과 체크. Godot 로고를 서비스 로고로 쓰지 않는다. */}
+            <rect width="32" height="32" rx="7" fill="#304766" />
+            <path
+              d="M9 10.5h14M9 15.5h9M9 20.5h4"
+              stroke="#fff"
+              strokeWidth="2.4"
+              strokeLinecap="round"
+            />
+            <path
+              d="M17 21l3 3 5.5-6"
+              fill="none"
+              stroke="#a6c6ed"
+              strokeWidth="2.4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
           <div>
             <strong>Godot Fieldwork</strong>
           </div>

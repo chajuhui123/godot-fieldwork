@@ -42,9 +42,9 @@ CC BY 4.0 International: https://creativecommons.org/licenses/by/4.0/
 홈 애니메이션 아이콘: https://raw.githubusercontent.com/godotengine/godot/4.5.1-stable/icon.svg
 아이콘 원본은 수정하지 않고 CSS로 위치와 회전을 애니메이션 처리했습니다.
 출처: https://godotengine.org/press/
-사용 파일: assets/godot-logo.svg (제공받은 SVG를 화면 크기에 맞춰 표시)
 원저작권 고지: assets/GODOT-LOGO-LICENSE.txt
 Godot 엔진을 나타내기 위해 사용하며, Fieldwork의 자체 로고나 공식 인증으로 사용하지 않습니다.
+헤더와 파비콘의 Fieldwork 표식은 Godot 로고와 별개로 직접 만든 것입니다.
 
 Pretendard
 Copyright (c) 2021 Kil Hyung-jin, with Reserved Font Name Pretendard.
@@ -69,7 +69,7 @@ page='''<!doctype html>
 <section><h2>홈 이미지</h2><p>Godot 4.5 공식 문서의 <a href="https://docs.godotengine.org/en/4.5/getting_started/introduction/first_look_at_the_editor.html">3D·Script 에디터 화면</a>, <a href="https://docs.godotengine.org/en/4.5/getting_started/first_2d_game/index.html">Dodge the Creeps!</a>, <a href="https://docs.godotengine.org/en/4.5/getting_started/first_3d_game/index.html">Squash the Creeps</a> 플레이 이미지. 원저자: Juan Linietsky, Ariel Manzur, and the Godot Engine community. <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>. 원본 파일은 수정하지 않았으며 웹에서 크기를 조절하고 애니메이션의 정지 화면을 표시합니다. <a href="assets/home/ATTRIBUTION.txt">개별 이미지 출처</a></p><p>서비스 실습 화면 스크린샷은 © 2026 Juhee Cha. 포함된 로고와 외부 구성 요소의 권리는 각 원저자에게 있습니다.</p></section>
 <section><h2>엔진·로고·편집기·글꼴</h2><ul>
 <li>Godot Engine 4.5.1 — Godot Engine contributors; Juan Linietsky, Ariel Manzur. <a href="runtime/GODOT-LICENSE.txt">MIT 라이선스</a> · <a href="runtime/GODOT-COPYRIGHT.txt">엔진 구성 요소</a></li>
-<li>Godot Engine Logo — © 2017 Andrea Calabró. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://godotengine.org/press/">공식 배포처</a> · <a href="assets/GODOT-LOGO-LICENSE.txt">원저작권 고지</a>. 제공받은 SVG를 화면 크기에 맞춰 표시하며 Godot 엔진을 나타내기 위해 사용합니다. 홈의 <a href="assets/home/godot-icon.svg">Godot 아이콘</a>은 <a href="https://github.com/godotengine/godot/blob/4.5.1-stable/icon.svg">공식 저장소</a>에서 가져왔으며 같은 저자와 라이선스가 적용됩니다. 원본 수정 없이 CSS 애니메이션을 추가했습니다.</li>
+<li>Godot Engine Logo — © 2017 Andrea Calabró. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://godotengine.org/press/">공식 배포처</a> · <a href="assets/GODOT-LOGO-LICENSE.txt">원저작권 고지</a>. Godot 엔진을 나타내기 위해서만 사용하며 서비스 로고로 쓰지 않습니다. 홈의 <a href="assets/home/godot-icon.svg">Godot 아이콘</a>은 <a href="https://github.com/godotengine/godot/blob/4.5.1-stable/icon.svg">공식 저장소</a>에서 가져왔으며 같은 저자와 라이선스가 적용됩니다. 원본 수정 없이 CSS 애니메이션을 추가했습니다.</li>
 <li>React, React DOM, Scheduler — <a href="REACT-LICENSES.txt">원저자 및 라이선스 전문</a></li>
 <li>CodeMirror 및 번들 구성 요소 — <a href="EDITOR-LICENSES.txt">원저자 및 라이선스 전문</a></li>
 <li>Pretendard — © 2021 Kil Hyung-jin. <a href="https://github.com/orioncactus/pretendard">배포처</a> · <a href="fonts/OFL.txt">SIL OFL 1.1</a></li></ul></section>

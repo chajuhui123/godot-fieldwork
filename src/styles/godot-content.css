@@ -19,8 +19,8 @@
 .curriculum #course-jump:hover{border-color:#91acd0}
 .curriculum :focus-visible{outline-color:#a9cdec}
 ::selection{background:#d6e3f5;color:#233650}
-.brand{gap:16px;min-width:0}.brand-logo{display:block;width:104px;height:42px;object-fit:contain;flex-shrink:0}
-@media(max-width:780px){.brand{gap:12px}.brand-logo{width:80px;height:32px}.brand strong{font-size:14px}}
+.brand{gap:12px;min-width:0}.brand-logo{display:block;width:32px;height:32px;flex-shrink:0}
+@media(max-width:780px){.brand{gap:10px}.brand-logo{width:28px;height:28px}.brand strong{font-size:14px}}
 body,button,input,select,textarea,code,pre,kbd,.signal-button{font-family:var(--sans)}
 /* Editor-inspired details stay inside the learning workspace. */
 .lesson-workspace{--accent:#28364d;--blue:#78a9d4;--blue-2:#496585;--focus:#496585;--tint:#e8eef6;--surface:#f0f3f7;--fg-neutral:#253044;--fg-subtle:#59677a}

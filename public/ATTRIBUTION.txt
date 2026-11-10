@@ -33,9 +33,9 @@ CC BY 4.0 International: https://creativecommons.org/licenses/by/4.0/
 홈 애니메이션 아이콘: https://raw.githubusercontent.com/godotengine/godot/4.5.1-stable/icon.svg
 아이콘 원본은 수정하지 않고 CSS로 위치와 회전을 애니메이션 처리했습니다.
 출처: https://godotengine.org/press/
-사용 파일: assets/godot-logo.svg (제공받은 SVG를 화면 크기에 맞춰 표시)
 원저작권 고지: assets/GODOT-LOGO-LICENSE.txt
 Godot 엔진을 나타내기 위해 사용하며, Fieldwork의 자체 로고나 공식 인증으로 사용하지 않습니다.
+헤더와 파비콘의 Fieldwork 표식은 Godot 로고와 별개로 직접 만든 것입니다.
 
 Pretendard
 Copyright (c) 2021 Kil Hyung-jin, with Reserved Font Name Pretendard.
