@@ -116,10 +116,9 @@ export function createEditor(
             ".cm-selectionBackground, &.cm-focused .cm-selectionBackground": {
               backgroundColor: "#405b80",
             },
-            "&.cm-focused": {
-              outline: "2px solid #88b4e0",
-              outlineOffset: "-2px",
-            },
+            // 클릭할 때마다 테두리가 생기지 않도록 한다. 커서와 현재 줄 강조로 초점을 보여 준다.
+            "&.cm-focused": { outline: "none" },
+            ".cm-content:focus-visible": { outline: "none" },
           },
           { dark: true },
         ),
