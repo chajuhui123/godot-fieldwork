@@ -3,6 +3,7 @@ Godot Fieldwork — 출처 및 권리 안내
 독립적으로 제작한 비공식 학습 서비스입니다. Godot Engine 개발팀의 제작·후원·승인을 의미하지 않습니다.
 서비스 코드·디자인과 직접 창작한 콘텐츠: © 2026 Juhee Cha
 https://github.com/chajuhui123
+라이선스: 소스 코드 MIT, 직접 작성한 수업 콘텐츠 CC BY 4.0 (https://github.com/chajuhui123/godot-fieldwork)
 이 표시는 아래 원문·로고·엔진·외부 구성 요소의 권리를 포함하거나 대체하지 않습니다.
 
 Godot Engine documentation
@@ -33,9 +34,9 @@ CC BY 4.0 International: https://creativecommons.org/licenses/by/4.0/
 홈 애니메이션 아이콘: https://raw.githubusercontent.com/godotengine/godot/4.5.1-stable/icon.svg
 아이콘 원본은 수정하지 않고 CSS로 위치와 회전을 애니메이션 처리했습니다.
 출처: https://godotengine.org/press/
-사용 파일: assets/godot-logo.svg (제공받은 SVG를 화면 크기에 맞춰 표시)
 원저작권 고지: assets/GODOT-LOGO-LICENSE.txt
 Godot 엔진을 나타내기 위해 사용하며, Fieldwork의 자체 로고나 공식 인증으로 사용하지 않습니다.
+헤더와 파비콘의 Fieldwork 표식은 Godot 로고와 별개로 직접 만든 것입니다.
 
 Pretendard
 Copyright (c) 2021 Kil Hyung-jin, with Reserved Font Name Pretendard.

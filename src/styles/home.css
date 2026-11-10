@@ -6,7 +6,7 @@
 
 .home-demo canvas{display:block;max-height:400px;max-width:100%;width:auto;height:auto;object-fit:contain}.home-demo canvas[hidden]{display:none}.home-demo{height:400px}@media(max-width:780px){.home-demo{height:320px}}
 
-@media(max-width:480px){.app-header:has(.home-nav:not([hidden])){gap:12px}.app-header:has(.home-nav:not([hidden])) .brand{gap:8px}.app-header:has(.home-nav:not([hidden])) .brand-logo{width:64px}.home-nav a{padding-inline:8px}}
+@media(max-width:480px){.app-header:has(.home-nav:not([hidden])){gap:12px}.app-header:has(.home-nav:not([hidden])) .brand{gap:8px}.app-header:has(.home-nav:not([hidden])) .brand-logo{width:28px;height:28px}.home-nav a{padding-inline:8px}}
 @media(max-width:360px){.app-header:has(.home-nav:not([hidden])){height:auto;flex-wrap:wrap;padding-block:12px}.home-nav:not([hidden]){margin-left:auto}}
 @media(prefers-reduced-motion:reduce){.home-nav a{transition:none}}
 
