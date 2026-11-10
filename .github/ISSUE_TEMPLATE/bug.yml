@@ -7,7 +7,7 @@ body:
     id: lesson
     attributes:
       label: 수업 주소
-      placeholder: https://chajuhui123.github.io/godot-fieldwork/#editor
+      placeholder: https://godot-fieldwork.vercel.app/#editor
     validations:
       required: true
   - type: textarea

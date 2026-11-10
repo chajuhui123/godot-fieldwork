@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://chajuhui123.github.io/godot-fieldwork/"><b>서비스 바로가기</b></a>
+  <a href="https://godot-fieldwork.vercel.app/"><b>서비스 바로가기</b></a>
   ·
   <a href="https://docs.godotengine.org/ko/4.x/">Godot 한국어 공식 문서</a>
 </p>
