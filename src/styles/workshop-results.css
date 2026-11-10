@@ -307,3 +307,15 @@
 .studio .preview-pane #live-game {
   width: min(100%, 48dvh, calc((100cqh - 44px) * 16 / 9));
 }
+/* iframe의 기본 높이(150px)가 칸을 키우면 16:9가 깨지고 Godot이 남는 부분을 검은 띠로 채운다.
+   iframe을 칸에 겹쳐 놓아 크기는 aspect-ratio로만 정해지게 한다. */
+.studio .preview-pane #live-game {
+  min-height: 0;
+  /* 폭을 16px 단위로 내려 맞춰 높이도 정수 픽셀(9의 배수)이 되게 한다. 소수 픽셀이면 가장자리에 1px 검은 선이 생긴다.
+     round()를 모르는 브라우저는 위의 width를 그대로 쓴다. */
+  width: round(down, min(100%, 48dvh, calc((100cqh - 44px) * 16 / 9)), 16px);
+}
+.studio .preview-pane #live-game iframe {
+  position: absolute;
+  inset: 0;
+}
