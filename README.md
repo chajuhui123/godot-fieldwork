@@ -14,39 +14,35 @@
 
 ## 기술 스택
 
-<img src="https://img.shields.io/badge/React_19-61DAFB?style=flat&logo=react&logoColor=black"/>
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white"/>
-<img src="https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white"/>
-<img src="https://img.shields.io/badge/CodeMirror_6-D30707?style=flat"/>
-<img src="https://img.shields.io/badge/Godot_Engine_4.5.1-478CBF?style=flat&logo=godotengine&logoColor=white"/>
-<img src="https://img.shields.io/badge/GDScript-355570?style=flat&logo=godotengine&logoColor=white"/>
-<img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white"/>
+<p>
+  <img src="https://img.shields.io/badge/React_19-61DAFB?style=flat&logo=react&logoColor=black"/> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white"/> <img src="https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white"/> <img src="https://img.shields.io/badge/CodeMirror_6-D30707?style=flat"/> <img src="https://img.shields.io/badge/Godot_Engine_4.5.1-478CBF?style=flat&logo=godotengine&logoColor=white"/> <img src="https://img.shields.io/badge/GDScript-355570?style=flat&logo=godotengine&logoColor=white"/> <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white"/>
+</p>
 
 ## 서비스 소개
 
-<p align="center">
-  <img src="public/assets/home/godot-icon.svg" width="96" height="96" alt="Godot 엔진 로고"/>
+<p align="center" >
+  <img src="public/assets/home/godot-icon.svg" width="96" height="96" vspace="20" alt="Godot 엔진 로고"/>
 </p>
 
-**이런 분께 추천드립니다**
+### 이런 분께 추천드립니다
 
 - Godot을 처음 배우는 분
 - 공식 문서를 읽었지만 직접 써 보는 연습이 필요한 분
 - 프로그램 설치 없이 바로 시작하고 싶은 분
 
-**읽고, 풀고, 만듭니다**
+### 읽고, 풀고, 만듭니다
 
 수업마다 개념 설명 → 퀴즈 → 코드 실습 순서로 진행합니다. 기초부터 3D·셰이더까지 6개 과정, 65개 수업이 있습니다.
 
-**코드가 게임으로 움직입니다**
+### 코드가 게임으로 움직입니다
 
 브라우저 안에서 실제 Godot 엔진이 코드를 실행합니다. 실행 버튼을 누르면 결과 화면이 바로 나타납니다.
 
-**정답 여부를 바로 확인할 수 있습니다**
+### 정답 여부를 바로 확인할 수 있습니다
 
 실행 결과를 자동으로 검사해 통과 여부를 표시합니다. 틀린 부분에는 목표값과 힌트를 함께 보여 줍니다.
 
-**가입 없이도 이어서 학습할 수 있습니다**
+### 가입 없이도 이어서 학습할 수 있습니다
 
 진도와 코드는 이 브라우저에 저장됩니다. 혹은 만든 결과를 다운로드 받아 Godot 에디터에서도 계속 작업할 수 있습니다. 처음이라면 추천 트랙 "2D 게임 첫걸음"의 10개 수업을 순서대로 따라가면 됩니다.
 
