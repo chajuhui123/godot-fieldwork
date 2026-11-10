@@ -14,13 +14,9 @@
 
 ## 기술 스택
 
-<img src="https://img.shields.io/badge/React_19-61DAFB?style=flat&logo=react&logoColor=black"/>
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white"/>
-<img src="https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white"/>
-<img src="https://img.shields.io/badge/CodeMirror_6-D30707?style=flat"/>
-<img src="https://img.shields.io/badge/Godot_Engine_4.5.1-478CBF?style=flat&logo=godotengine&logoColor=white"/>
-<img src="https://img.shields.io/badge/GDScript-355570?style=flat&logo=godotengine&logoColor=white"/>
-<img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white"/>
+<p>
+  <img src="https://img.shields.io/badge/React_19-61DAFB?style=flat&logo=react&logoColor=black"/> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white"/> <img src="https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white"/> <img src="https://img.shields.io/badge/CodeMirror_6-D30707?style=flat"/> <img src="https://img.shields.io/badge/Godot_Engine_4.5.1-478CBF?style=flat&logo=godotengine&logoColor=white"/> <img src="https://img.shields.io/badge/GDScript-355570?style=flat&logo=godotengine&logoColor=white"/> <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white"/>
+</p>
 
 ## 서비스 소개
 
