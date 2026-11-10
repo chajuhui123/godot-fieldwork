@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Godot 엔진 자체의 버그
+    url: https://github.com/godotengine/godot/issues
+    about: Fieldwork가 아니라 Godot 엔진의 문제라면 공식 저장소에 남겨 주세요.
+  - name: Godot 사용법 질문
+    url: https://godotengine.org/community/
+    about: 학습 중 생긴 일반적인 질문은 Godot 커뮤니티에서 더 빨리 답을 얻을 수 있어요.

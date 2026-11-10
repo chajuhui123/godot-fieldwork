@@ -1,0 +1,46 @@
+name: 실행·채점 오류
+description: 엔진이 켜지지 않거나, 맞는 코드가 통과하지 못하거나, 화면이 깨지는 문제를 알려 주세요.
+title: "[버그] "
+labels: ["bug"]
+body:
+  - type: input
+    id: lesson
+    attributes:
+      label: 수업 주소
+      placeholder: https://chajuhui123.github.io/godot-fieldwork/#editor
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 재현 순서
+      placeholder: |
+        1. 실습 코드를 아래처럼 작성
+        2. "실행하고 채점" 클릭
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 기대한 결과와 실제 결과
+      description: 검사 결과 탭이나 Console에 나온 메시지가 있다면 함께 붙여 주세요.
+    validations:
+      required: true
+  - type: textarea
+    id: code
+    attributes:
+      label: 작성한 코드
+      render: gdscript
+  - type: input
+    id: environment
+    attributes:
+      label: 사용 환경
+      placeholder: 예) macOS · Chrome 130, Android · Samsung Internet
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: 화면 캡처
+      description: 이미지를 끌어다 놓을 수 있어요.

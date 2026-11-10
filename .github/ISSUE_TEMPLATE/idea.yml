@@ -1,0 +1,22 @@
+name: 개선 제안
+description: 새 수업, 기능, 화면 개선 아이디어를 남겨 주세요.
+title: "[제안] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 불편했던 점이나 필요한 이유
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: 제안하는 내용
+    validations:
+      required: true
+  - type: textarea
+    id: reference
+    attributes:
+      label: 참고 자료
+      description: 관련 공식 문서, 비슷한 서비스, 화면 캡처 등이 있다면 남겨 주세요.
