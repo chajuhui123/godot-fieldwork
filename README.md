@@ -57,3 +57,12 @@ python3 runtime-src/build.py --godot /path/to/Godot --templates /path/to/templat
 
 ### 소개 홈
 기본 URL과 `#home`은 소개 홈을 엽니다. 수업 URL(예: `#editor`)은 그대로 사용할 수 있습니다. 헤더 로고로 홈으로 돌아오면 실행 중인 Godot 런타임을 정리합니다. 홈 구성은 `src/components/Home.tsx`, 스타일은 `src/styles/home.css`와 `src/styles/home-editorial.css`에 있습니다. 저장소 공개 시 “서비스 저장소”의 준비 중 문구를 실제 GitHub 링크로 교체하세요. 홈 이미지의 출처는 `public/assets/home/ATTRIBUTION.txt`에 있습니다.
+
+## 라이선스
+
+- 소스 코드: [MIT](LICENSE)
+- 직접 작성한 수업 콘텐츠(퀴즈, 실습 과제, 시작·참고 코드, 채점 조건, 설명 글): [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+- Godot 공식 문서를 요약·재구성한 부분: 원문 라이선스 [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
+- Godot 엔진, 로고, 글꼴, 번들 라이브러리: 각 라이선스 ([LICENSE-CONTENT.md](LICENSE-CONTENT.md))
+
+Godot Fieldwork는 비공식 학습 서비스이며 Godot Engine 개발팀의 승인을 받지 않았습니다.

@@ -3,6 +3,7 @@ Godot Fieldwork — 출처 및 권리 안내
 독립적으로 제작한 비공식 학습 서비스입니다. Godot Engine 개발팀의 제작·후원·승인을 의미하지 않습니다.
 서비스 코드·디자인과 직접 창작한 콘텐츠: © 2026 Juhee Cha
 https://github.com/chajuhui123
+라이선스: 소스 코드 MIT, 직접 작성한 수업 콘텐츠 CC BY 4.0 (https://github.com/chajuhui123/godot-fieldwork)
 이 표시는 아래 원문·로고·엔진·외부 구성 요소의 권리를 포함하거나 대체하지 않습니다.
 
 Godot Engine documentation
