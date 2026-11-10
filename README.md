@@ -20,7 +20,7 @@ npm run build    # TypeScript 검사 및 dist/ 생성
 npm run preview  # 빌드한 사이트 확인
 ```
 
-배포할 폴더는 `dist/`입니다. 호스팅 서버는 `runtime/` 파일에 `Access-Control-Allow-Origin: *`를 설정하고 WASM을 `application/wasm`으로 제공해야 합니다. 별도 런타임 호스트를 쓰려면 빌드 전에 `VITE_GODOT_RUNTIME_URL`을 지정하세요(예: `https://example.org/runtime/`). 기존 4175 정적 서버에 CORS 설정이 없으면 로컬에서만 포트 4176의 `python3 runtime-src/server.py --port 4176` 서버를 사용합니다.
+배포할 폴더는 `dist/`입니다. 호스팅 서버는 `runtime/` 파일에 `Access-Control-Allow-Origin: *`를 설정하고 WASM을 `application/wasm`으로 제공해야 합니다. 별도 런타임 호스트를 쓰려면 빌드 전에 `VITE_GODOT_RUNTIME_URL`을 지정하세요(예: `https://example.org/runtime/`). `main`에 머지하면 `.github/workflows/deploy.yml`이 테스트와 빌드를 거쳐 GitHub Pages(`https://chajuhui123.github.io/godot-fieldwork/`)에 배포합니다. GitHub Pages는 모든 파일에 `Access-Control-Allow-Origin: *`를 붙이므로 추가 헤더 설정이 필요 없습니다. 기존 4175 정적 서버에 CORS 설정이 없으면 로컬에서만 포트 4176의 `python3 runtime-src/server.py --port 4176` 서버를 사용합니다.
 
 ## 프로젝트 구조
 
